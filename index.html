@@ -1,0 +1,1522 @@
+<!doctype html>
+<html lang="th" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Palette of Us · สีที่ชอบ พยบ. รุ่น 1</title>
+<meta name="description" content="ระบบสำรวจสีที่ชอบของนักศึกษาพยาบาล รุ่น 1 วิทยาลัยพยาบาลบรมราชชนนี สุราษฎร์ธานี">
+<meta name="theme-color" content="#07070B">
+<script>try{var t=JSON.parse(localStorage.getItem('pou.theme'));if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font:'Anuphan','Noto Sans Thai','Leelawadee UI',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --display:'Bricolage Grotesque','Anuphan',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Consolas,monospace;
+  --r-lg:28px;--r:20px;--r-sm:14px;
+  --pick:#A78BFA;--pick-ink:#0B0B10;
+  --glow-a:#7C3AED;--glow-b:#EC4899;--glow-c:#06B6D4;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+:root,:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#07070B;--bg-elev:#101017;--glass:rgba(12,12,18,.74);
+  --card:rgba(255,255,255,.035);--card-2:rgba(255,255,255,.07);--card-solid:#14141C;
+  --line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.16);
+  --ink:#F5F5F8;--ink-2:#A8A8B8;--ink-3:#71717F;
+  --ring:rgba(255,255,255,.07);--hatch:rgba(255,255,255,.07);
+  --shadow:0 24px 60px -24px rgba(0,0,0,.75);
+  --glow-op:.55;--grain-op:.06;
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#F3F2EE;--bg-elev:#FFFFFF;--glass:rgba(246,245,241,.8);
+  --card:rgba(255,255,255,.62);--card-2:rgba(255,255,255,.95);--card-solid:#FFFFFF;
+  --line:rgba(20,20,40,.08);--line-2:rgba(20,20,40,.16);
+  --ink:#111118;--ink-2:#55556A;--ink-3:#85859A;
+  --ring:rgba(20,20,40,.06);--hatch:rgba(20,20,40,.07);
+  --shadow:0 24px 50px -28px rgba(30,30,70,.28);
+  --glow-op:.3;--grain-op:.035;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;font-family:var(--font);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0;text-align:inherit}
+input,select{font:inherit;color:inherit}
+svg{display:block}
+[hidden]{display:none!important}
+::selection{background:var(--pick);color:var(--pick-ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+code{font-family:var(--mono)}
+
+/* ambient background */
+.ambient{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;opacity:var(--glow-op)}
+.ambient i{position:absolute;width:56vmax;height:56vmax;border-radius:50%;filter:blur(100px);opacity:.6;transition:background-color 1.6s var(--ease);will-change:transform}
+.ambient i:nth-child(1){background-color:var(--glow-a);top:-28vmax;left:-18vmax;animation:drift1 26s ease-in-out infinite alternate}
+.ambient i:nth-child(2){background-color:var(--glow-b);top:8vh;right:-30vmax;animation:drift2 32s ease-in-out infinite alternate}
+.ambient i:nth-child(3){background-color:var(--glow-c);bottom:-36vmax;left:18vw;animation:drift3 38s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(16vw,10vh) scale(1.15)}}
+@keyframes drift2{to{transform:translate(-14vw,16vh) scale(.9)}}
+@keyframes drift3{to{transform:translate(10vw,-14vh) scale(1.1)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--grain-op);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;padding:12px clamp(16px,3vw,32px);border-bottom:1px solid var(--line)}
+.topbar::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}
+.brand{display:flex;align-items:center;gap:11px;min-width:0;color:inherit;text-decoration:none}
+.logo{width:30px;height:30px;border-radius:50%;flex:none;position:relative;background:conic-gradient(from 200deg,#FF5DA2,#FF8A00,#FFD400,#2DC653,#4CC9F0,#3A56D4,#8E44EC,#FF5DA2);animation:spin 16s linear infinite}
+.logo::after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--bg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.brand-text{min-width:0}
+.brand b{display:block;font-family:var(--display);font-weight:800;font-size:1.08rem;letter-spacing:-.02em;line-height:1.1}
+.brand small{display:block;color:var(--ink-3);font-size:.72rem;white-space:nowrap}
+.tabs{display:flex;gap:4px;padding:4px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:999px}
+.tab{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;color:var(--ink-2);font-weight:500;font-size:.92rem;white-space:nowrap;transition:color .2s,background .25s var(--ease)}
+.tab svg{width:17px;height:17px}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.actions{display:flex;align-items:center;gap:6px}
+.icon-btn{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);transition:color .2s,border-color .2s,background .2s}
+.icon-btn:hover{color:var(--ink);border-color:var(--line-2)}
+.icon-btn svg{width:18px;height:18px}
+.icon-btn.is-spinning svg{animation:spin .9s linear infinite}
+.status{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--ink-2);white-space:nowrap;margin-right:4px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ink-3)}
+.status[data-s="live"] i{background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+.status[data-s="demo"] i{background:#F59E0B;box-shadow:0 0 0 4px rgba(245,158,11,.18)}
+.status[data-s="error"] i{background:#EF4444;box-shadow:0 0 0 4px rgba(239,68,68,.18)}
+.status[data-s="sync"] i{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+/* banner */
+.banner{max-width:1240px;margin:16px auto 0;padding:0 clamp(16px,3vw,32px)}
+.banner-in{display:flex;align-items:center;gap:12px;padding:10px 10px 10px 16px;border-radius:16px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);font-size:.88rem}
+.banner-in p{margin:0;flex:1;color:var(--ink-2)}
+.banner-in b{color:var(--ink)}
+.banner-dot{width:8px;height:8px;border-radius:50%;background:#F59E0B;flex:none}
+
+main{position:relative;max-width:1240px;margin:0 auto;padding:clamp(22px,4vw,44px) clamp(16px,3vw,32px) 140px}
+.view,.step{animation:fadeUp .45s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.kicker{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.kicker::before{content:"";width:22px;height:1px;background:currentColor}
+.kicker.kicker-th{font-family:var(--font);letter-spacing:.02em;text-transform:none;font-size:.84rem}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 22px;border-radius:999px;font-weight:600;font-size:.95rem;white-space:nowrap;transition:transform .15s var(--ease),background .2s,box-shadow .25s,opacity .2s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{box-shadow:0 12px 30px -12px var(--ink)}
+.btn-ghost{border:1px solid var(--line-2);background:var(--card)}
+.btn-ghost:hover{background:var(--card-2)}
+.btn-pick{background:var(--pick);color:var(--pick-ink);box-shadow:0 14px 34px -14px var(--pick),inset 0 0 0 1px rgba(255,255,255,.18)}
+.btn-pick:hover{box-shadow:0 18px 40px -12px var(--pick),inset 0 0 0 1px rgba(255,255,255,.25)}
+.btn[disabled]{opacity:.38;pointer-events:none}
+.btn-sm{height:36px;padding:0 14px;font-size:.85rem}
+.spinner{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .7s linear infinite;display:none}
+.is-loading .spinner{display:inline-block}
+.is-loading .btn-ico{display:none}
+
+/* search & segmented */
+.search{flex:1 1 320px;display:flex;align-items:center;gap:10px;height:52px;padding:0 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);transition:border-color .2s,box-shadow .2s}
+.search:focus-within{border-color:var(--line-2);box-shadow:0 0 0 4px var(--ring)}
+.search svg{width:18px;height:18px;color:var(--ink-3);flex:none}
+.search input{flex:1;border:0;outline:0;background:none;font-size:1rem;min-width:0}
+.search input::placeholder{color:var(--ink-3)}
+.seg{display:inline-flex;padding:4px;border-radius:14px;background:var(--card);border:1px solid var(--line);gap:2px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg button{padding:8px 14px;border-radius:10px;font-size:.86rem;color:var(--ink-2);white-space:nowrap;transition:background .2s,color .2s}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--card-2);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line-2)}
+.seg .n{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);margin-left:7px}
+.seg-sm button{padding:6px 12px;font-size:.8rem}
+
+/* dots */
+.dot{--s:38px;width:var(--s);height:var(--s);border-radius:50%;flex:none;display:grid;place-items:center;background:var(--c);color:var(--ci,#fff);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),0 8px 20px -10px var(--c)}
+.dot.is-light{box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+.dot svg{width:52%;height:52%}
+.dot.empty{background:transparent;border:1.5px dashed var(--line-2);box-shadow:none}
+.dot.sm{--s:22px}
+.dot.xs{--s:12px;box-shadow:inset 0 0 0 1px var(--line-2)}
+
+/* ───── survey: who ───── */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.hero h1{font-size:clamp(2.3rem,6vw,4.4rem);line-height:1.2;margin:.32em 0 .28em;font-weight:700}
+.grad{background:linear-gradient(90deg,#FF5DA2,#FF8A00,#FFD400,#2DC653,#4CC9F0,#8E44EC,#FF5DA2);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 10s linear infinite;padding:0 .04em}
+@keyframes shine{to{background-position:200% 0}}
+.lead{color:var(--ink-2);font-size:clamp(.98rem,1.4vw,1.1rem);max-width:58ch;margin:0}
+.hero-ring{position:relative;width:136px;height:136px}
+.hero-ring svg{width:100%;height:100%}
+.ring-text{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1.1}
+.ring-text b{font-family:var(--display);font-size:2.1rem;font-weight:700;letter-spacing:-.02em}
+.ring-text b small{font-size:.9rem;color:var(--ink-3);font-weight:500;letter-spacing:0}
+.ring-text span{font-size:.75rem;color:var(--ink-2);margin-top:4px}
+.who-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:28px 0 16px}
+.people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.person{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-align:left;min-width:0;transition:transform .2s var(--ease),border-color .2s,background .2s}
+.person:hover{transform:translateY(-2px);border-color:var(--line-2);background:var(--card-2)}
+.person-text{display:flex;flex-direction:column;min-width:0;line-height:1.35}
+.person .nick{font-weight:600;font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.person .full{font-size:.78rem;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.person .no{margin-left:auto;align-self:flex-start;font-family:var(--mono);font-size:.68rem;color:var(--ink-3)}
+.skel{height:66px;border-radius:18px;background:linear-gradient(90deg,var(--card) 0%,var(--card-2) 50%,var(--card) 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite;border:1px solid var(--line)}
+@keyframes shimmer{to{background-position:-200% 0}}
+.empty-state{grid-column:1/-1;padding:48px 16px;text-align:center;color:var(--ink-3)}
+
+/* ───── survey: pick ───── */
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--ink-2);font-size:.9rem;padding:7px 14px 7px 10px;border-radius:999px;margin-bottom:18px;border:1px solid transparent;transition:.2s}
+.back svg{width:16px;height:16px}
+.back:hover{color:var(--ink);border-color:var(--line);background:var(--card)}
+.pick-layout{display:grid;grid-template-columns:minmax(300px,400px) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start}
+.preview{position:sticky;top:92px;min-height:540px;border-radius:var(--r-lg);padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;overflow:hidden;isolation:isolate;background-color:var(--c,#15151C);color:var(--ci,#fff);transition:background-color .6s var(--ease),color .4s,box-shadow .6s;box-shadow:0 40px 90px -40px var(--c,transparent),inset 0 0 0 1px rgba(255,255,255,.12)}
+.preview::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 80% at 0% 0%,rgba(255,255,255,.36),transparent 55%),linear-gradient(165deg,transparent 42%,rgba(0,0,0,.3))}
+.preview.is-empty{background-color:#14141B;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.preview.is-empty::before{inset:-25%;background:conic-gradient(from 90deg,#FF5DA2,#FF8A00,#FFD400,#2DC653,#4CC9F0,#3A56D4,#8E44EC,#FF5DA2);filter:blur(60px);opacity:.55;animation:spin 20s linear infinite}
+.pv-top{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;opacity:.78}
+.pv-label{font-size:.95rem;opacity:.82}
+.pv-name{font-size:clamp(2rem,3.4vw,2.8rem);font-weight:700;line-height:1.2;margin:.12em 0 .18em;word-break:break-word}
+.pv-hex{font-family:var(--mono);font-size:.88rem;opacity:.8}
+.pv-chip{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;background:var(--ci-soft,rgba(255,255,255,.2));font-size:.8rem;font-weight:600}
+.pv-meaning{margin:.7em 0 .35em;font-size:.95rem;line-height:1.55}
+.pv-friends{margin:0;font-size:.82rem;opacity:.78}
+.pv-empty-title{font-size:1.7rem;font-weight:700;line-height:1.3;margin:0 0 .3em}
+.pv-empty-sub{margin:0;opacity:.75;font-size:.92rem}
+.pick-head h2{font-size:clamp(1.5rem,2.6vw,2.05rem);margin:0;font-weight:700;line-height:1.3}
+.pick-head p{margin:.35em 0 0;color:var(--ink-2);font-size:.92rem}
+.groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;margin-top:22px}
+.group{padding:16px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
+.group-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:12px;font-weight:600;font-size:.95rem}
+.group-n{font-size:.75rem;color:var(--ink-3);font-weight:400}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.sw{width:46px;height:46px;border-radius:14px;background:var(--c);position:relative;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);transition:transform .3s var(--spring),border-radius .3s var(--ease),box-shadow .25s}
+.sw.is-light{box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+.sw:hover{transform:translateY(-3px) scale(1.07)}
+.sw.on{border-radius:50%;transform:scale(1.1);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--ink),0 12px 26px -10px var(--c)}
+.sw.on::after{content:"";position:absolute;inset:0;margin:auto;width:18px;height:18px;background:var(--ci);-webkit-mask:var(--check) center/contain no-repeat;mask:var(--check) center/contain no-repeat}
+:root{--check:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>")}
+.custom{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px 16px;align-items:center;margin-top:12px;padding:16px;border-radius:var(--r);background:var(--card);border:1px dashed var(--line-2);transition:border-color .2s}
+.custom.on{border-style:solid;border-color:var(--ink)}
+.custom-sw{position:relative;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:var(--ci);cursor:pointer;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.custom-sw.is-rainbow{background:conic-gradient(from 0deg,#FF5DA2,#FF8A00,#FFD400,#2DC653,#4CC9F0,#3A56D4,#8E44EC,#FF5DA2);color:#fff}
+.custom-sw svg{width:22px;height:22px;pointer-events:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
+.custom-sw input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;padding:0}
+.custom-text b{display:block;font-size:.98rem}
+.custom-text small{display:block;color:var(--ink-3);font-size:.8rem}
+.custom-fields{grid-column:1/-1;display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px}
+.input{height:46px;width:100%;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--card-2);outline:0;min-width:0;transition:border-color .2s,box-shadow .2s}
+.input::placeholder{color:var(--ink-3)}
+.input:focus{border-color:var(--line-2);box-shadow:0 0 0 4px var(--ring)}
+.input.mono{font-family:var(--mono);text-transform:uppercase;font-size:.9rem}
+.input.is-invalid{border-color:#EF4444}
+.savebar{position:sticky;bottom:20px;z-index:30;margin:26px auto 0;max-width:660px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 12px;border-radius:24px;background:var(--glass);-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);border:1px solid var(--line-2);box-shadow:var(--shadow)}
+.savebar-chip{display:flex;align-items:center;gap:12px;min-width:0}
+.savebar-chip b{display:block;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.savebar-chip small{display:block;font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+.savebar-chip>span:last-child{min-width:0}
+
+/* ───── survey: done ───── */
+.done{max-width:720px;margin:3vh auto 0;text-align:center}
+.done-card{position:relative;overflow:hidden;isolation:isolate;border-radius:36px;padding:clamp(36px,6vw,64px) 24px;background-color:var(--c);color:var(--ci);box-shadow:0 50px 120px -40px var(--c),inset 0 0 0 1px rgba(255,255,255,.14);animation:popIn .8s var(--spring)}
+.done-card::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(100% 80% at 0% 0%,rgba(255,255,255,.38),transparent 55%),linear-gradient(165deg,transparent 40%,rgba(0,0,0,.28))}
+.done-card .kicker{justify-content:center;color:inherit;opacity:.75}
+.done-badge{width:68px;height:68px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;background:var(--ci-soft)}
+.done-badge svg{width:32px;height:32px}
+.done-card h2{font-size:clamp(1.8rem,4.6vw,3rem);margin:.3em 0 .15em;line-height:1.25;word-break:break-word}
+.done-hex{font-family:var(--mono);opacity:.8}
+.done-stats{color:var(--ink-2);margin:26px auto;max-width:52ch}
+.done-stats b{color:var(--ink)}
+.done-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@keyframes popIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:none}}
+
+/* ───── dashboard ───── */
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.page-title{font-size:clamp(1.9rem,3.8vw,2.7rem);margin:.25em 0 0;line-height:1.25;font-weight:700}
+.page-meta{display:flex;align-items:center;gap:8px;color:var(--ink-3);font-size:.85rem}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:12px}
+.kpi{position:relative;padding:18px 20px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px;min-height:156px;min-width:0}
+.kpi-label{font-size:.84rem;color:var(--ink-2)}
+.kpi-value{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,3.4vw,2.9rem);line-height:1.05;letter-spacing:-.02em;margin-top:auto;display:flex;align-items:center;gap:12px;min-width:0}
+.kpi-value small{font-size:.42em;color:var(--ink-3);font-weight:500;letter-spacing:0;align-self:flex-end;margin-bottom:.35em}
+.kpi-value.is-text{font-family:var(--font);letter-spacing:0;font-size:clamp(1.7rem,2.8vw,2.3rem)}
+.kpi-value .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi-sub{font-size:.8rem;color:var(--ink-3)}
+.kpi .link{position:absolute;top:14px;right:14px;font-size:.78rem;color:var(--ink-2);padding:4px 10px;border-radius:999px;border:1px solid var(--line)}
+.kpi .link:hover{color:var(--ink);border-color:var(--line-2)}
+.meter{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:4px}
+.meter i{display:block;height:100%;border-radius:99px;background:var(--ink);width:var(--w);transition:width 1s var(--ease)}
+.dash-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{padding:20px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);min-width:0;scroll-margin-top:90px}
+.span-2{grid-column:span 2}
+.span-3{grid-column:1/-1}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.card-head h3{margin:0;font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.card-head p{margin:2px 0 0;font-size:.8rem;color:var(--ink-3)}
+.count{font-family:var(--mono);font-size:.75rem;font-weight:400;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line);color:var(--ink-2)}
+.mosaic{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}
+.tile{aspect-ratio:1;border-radius:10px;background:var(--c);color:var(--ci);position:relative;display:flex;align-items:flex-end;padding:5px 6px;font-size:.68rem;font-weight:600;line-height:1.2;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);transition:transform .3s var(--spring),box-shadow .3s;text-align:left}
+.tile.is-light{box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.tile span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.tile:hover{transform:scale(1.15);z-index:2;box-shadow:0 14px 30px -10px var(--c),inset 0 0 0 1px rgba(255,255,255,.22)}
+.tile.empty{background:repeating-linear-gradient(135deg,var(--hatch) 0 2px,transparent 2px 7px);box-shadow:inset 0 0 0 1px var(--line-2);color:var(--ink-3);font-weight:500}
+.tile.empty:hover{box-shadow:inset 0 0 0 1px var(--ink-3)}
+.bars{display:flex;flex-direction:column;gap:2px}
+.bar-row{display:grid;grid-template-columns:70px minmax(0,1fr) 64px;align-items:center;gap:10px;padding:8px;border-radius:10px;width:100%;text-align:left;transition:background .15s}
+.bar-row:hover{background:var(--card-2)}
+.bar-label{display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:500;white-space:nowrap}
+.bar-track{height:14px;display:block;min-width:0}
+.bar-fill{display:flex;gap:2px;height:100%;width:var(--w);min-width:8px;transition:width .9s var(--ease)}
+.bar-fill i{flex:1 1 0;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);min-width:2px}
+.bar-fill i.is-light{box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.bar-fill i:last-child{border-radius:0 4px 4px 0}
+.bar-val{font-family:var(--mono);font-size:.86rem;text-align:right;white-space:nowrap}
+.bar-val small{color:var(--ink-3);font-size:.72rem;margin-left:6px}
+.spectrum{display:flex;gap:2px;height:76px;border-radius:14px;overflow:hidden}
+.spectrum button{flex:1 1 0;background:var(--c);min-width:3px;transition:flex-grow .35s var(--ease)}
+.spectrum button:hover{flex-grow:4}
+.spectrum.is-empty{background:repeating-linear-gradient(135deg,var(--hatch) 0 2px,transparent 2px 8px);box-shadow:inset 0 0 0 1px var(--line-2);display:grid;place-items:center;color:var(--ink-3);font-size:.85rem}
+.sub-h{margin:22px 0 10px;font-size:.82rem;font-weight:500;color:var(--ink-2)}
+.shades{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.shade{display:flex;align-items:center;gap:10px;padding:8px 12px 8px 8px;border-radius:12px;background:var(--card);border:1px solid var(--line);min-width:0}
+.shade-sw{width:32px;height:32px;border-radius:9px;background:var(--c);flex:none;box-shadow:inset 0 0 0 1px var(--line-2)}
+.shade-name{font-size:.86rem;line-height:1.3;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shade-name small{display:block;font-family:var(--mono);font-size:.68rem;color:var(--ink-3)}
+.shade-n{margin-left:auto;font-family:var(--mono);font-size:.86rem;white-space:nowrap}
+.shade-n small{color:var(--ink-3);font-size:.7rem;margin-left:2px}
+.feed{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.feed li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.88rem;min-width:0}
+.feed li:last-child{border-bottom:0}
+.feed-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink-2)}
+.feed-text b{color:var(--ink);font-weight:600}
+.feed time{margin-left:auto;font-size:.74rem;color:var(--ink-3);white-space:nowrap}
+.muted{color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.86rem;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+.chip:hover{border-color:var(--line-2);background:var(--card-2)}
+.chip small{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"] small{color:inherit;opacity:.6}
+.chips-filter{flex-wrap:nowrap;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none;margin-bottom:12px}
+.chips-filter::-webkit-scrollbar,.seg::-webkit-scrollbar{display:none}
+.all-done{padding:18px;border-radius:14px;text-align:center;color:var(--ink-2);background:var(--card);border:1px dashed var(--line-2)}
+
+/* ───── people ───── */
+.people-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.select{height:52px;padding:0 40px 0 16px;border-radius:16px;border:1px solid var(--line);background:var(--card) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 16px center;-webkit-appearance:none;appearance:none;outline:0;cursor:pointer}
+.select option{background:var(--card-solid);color:var(--ink)}
+.table{border-radius:var(--r);border:1px solid var(--line);background:var(--card);overflow:hidden}
+.tr{display:grid;grid-template-columns:44px minmax(80px,.9fr) minmax(150px,1.8fr) 118px minmax(180px,1.9fr) 70px 112px;align-items:center;gap:14px;padding:12px 18px;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:.9rem;transition:background .15s}
+.tr:last-child{border-bottom:0}
+button.tr:hover{background:var(--card-2)}
+.th{font-size:.74rem;color:var(--ink-3);font-weight:500;padding-top:14px;padding-bottom:10px}
+.td{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.td-no,.td-id{font-family:var(--mono);font-size:.78rem;color:var(--ink-3)}
+.td-nick{font-weight:600}
+.td-name{color:var(--ink-2)}
+.td-color{display:flex;align-items:center;gap:10px}
+.td-color .cn{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.td-color code{font-size:.72rem;color:var(--ink-3)}
+.td-fam{font-size:.82rem;color:var(--ink-2)}
+.td-time{font-size:.78rem;color:var(--ink-3);text-align:right}
+.approx{font-size:.68rem;padding:1px 6px;border-radius:6px;border:1px solid var(--line-2);color:var(--ink-3)}
+
+/* ───── dialogs ───── */
+dialog{border:0;padding:0;background:transparent;color:var(--ink);width:min(560px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 24px);overflow:visible}
+dialog::backdrop{background:rgba(4,4,8,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+dialog[open] .sheet{animation:sheetIn .4s var(--spring)}
+@keyframes sheetIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.sheet{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:28px;overflow:hidden auto;max-height:calc(100dvh - 24px);box-shadow:var(--shadow)}
+.ph{position:relative;isolation:isolate;padding:26px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;background-color:var(--c);color:var(--ci)}
+.ph::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(110% 90% at 0% 0%,rgba(255,255,255,.36),transparent 55%),linear-gradient(165deg,transparent 40%,rgba(0,0,0,.3))}
+.ph.ph-empty{background:repeating-linear-gradient(135deg,var(--hatch) 0 2px,transparent 2px 9px);color:var(--ink)}
+.ph.ph-empty::before{display:none}
+.ph-close{position:absolute;top:16px;right:16px;background:var(--ci-soft,var(--card-2));border:0;color:inherit}
+.ph-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;opacity:.78}
+.ph-nick{font-size:clamp(2.2rem,7vw,3.2rem);font-weight:700;line-height:1.2;margin-top:6px;word-break:break-word}
+.ph-name{opacity:.86}
+.pb{padding:22px 26px;display:flex;flex-direction:column;gap:18px}
+.label{display:block;font-size:.75rem;color:var(--ink-3);margin-bottom:6px}
+.pb-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pb-color{font-size:1.45rem;font-weight:700;line-height:1.3}
+.copy{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:10px;border:1px solid var(--line-2);font-family:var(--mono);font-size:.8rem;white-space:nowrap;transition:background .2s}
+.copy:hover{background:var(--card-2)}
+.copy svg{width:14px;height:14px}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.specs div{padding:10px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line);min-width:0}
+.specs span{display:block;font-size:.72rem;color:var(--ink-3)}
+.specs b{font-weight:600;font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.meaning p{margin:0;font-size:.96rem}
+.harm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.harm-sw{aspect-ratio:1/1.05;border-radius:14px;background:var(--c);color:var(--ci);display:flex;flex-direction:column;justify-content:flex-end;padding:8px 9px;text-align:left;box-shadow:inset 0 0 0 1px var(--line);transition:transform .25s var(--spring);min-width:0}
+.harm-sw:hover{transform:translateY(-3px)}
+.harm-sw span{font-size:.7rem;opacity:.88}
+.harm-sw code{font-size:.66rem}
+.note{font-size:.8rem;color:var(--ink-3);margin:0}
+.pf{display:flex;justify-content:flex-end;gap:10px;padding:16px 26px 22px;border-top:1px solid var(--line);flex-wrap:wrap}
+.sheet-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:24px 26px 6px}
+.sheet-head h3{margin:.3em 0 0;font-size:1.35rem}
+.sheet-body{padding:12px 26px 20px;display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:.85rem;color:var(--ink-2)}
+.hint{margin:0;font-size:.8rem;color:var(--ink-3);line-height:1.6}
+.hint code{font-size:.78rem;padding:1px 6px;border-radius:6px;background:var(--card-2);color:var(--ink-2)}
+.test-result{padding:12px 14px;border-radius:12px;font-size:.85rem;border:1px solid var(--line-2);background:var(--card)}
+.test-result.ok{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.08)}
+.test-result.bad{border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.08)}
+.toggles{display:flex;flex-direction:column;border-top:1px solid var(--line);padding-top:6px}
+.toggle{display:flex;gap:14px;align-items:flex-start;padding:10px 0;cursor:pointer;position:relative}
+.toggle input{position:absolute;opacity:0;pointer-events:none}
+.sw-ui{flex:none;width:42px;height:24px;border-radius:99px;background:var(--line-2);position:relative;transition:background .2s;margin-top:2px}
+.sw-ui::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--ink);transition:transform .3s var(--spring),background .2s}
+.toggle input:checked+.sw-ui{background:var(--ink)}
+.toggle input:checked+.sw-ui::after{transform:translateX(18px);background:var(--bg)}
+.toggle input:focus-visible+.sw-ui{outline:2px solid var(--ink);outline-offset:2px}
+.toggle b{display:block;font-weight:600;font-size:.92rem}
+.toggle small{display:block;color:var(--ink-3);font-size:.8rem}
+
+/* tooltip, toast, confetti */
+.tip{position:fixed;left:0;top:0;z-index:100;pointer-events:none;display:flex;gap:10px;align-items:center;padding:9px 12px;border-radius:12px;background:var(--card-solid);border:1px solid var(--line-2);box-shadow:var(--shadow);font-size:.82rem;max-width:260px;line-height:1.4}
+.tip i{width:14px;height:14px;border-radius:4px;flex:none;box-shadow:inset 0 0 0 1px var(--line-2)}
+.tip b{display:block;font-weight:600}
+.tip small{display:block;color:var(--ink-2);font-size:.76rem}
+.toasts{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:120;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:max-content;max-width:calc(100vw - 32px)}
+.toast{display:flex;gap:10px;align-items:center;padding:12px 18px;border-radius:14px;background:var(--ink);color:var(--bg);font-size:.88rem;font-weight:500;box-shadow:var(--shadow);animation:toastIn .4s var(--spring);transition:opacity .3s,transform .3s}
+.toast-dot{width:8px;height:8px;border-radius:50%;background:#22C55E;flex:none}
+.toast.error .toast-dot{background:#EF4444}
+.toast.out{opacity:0;transform:translateY(8px)}
+@keyframes toastIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+#confetti{position:fixed;inset:0;width:100vw;height:100vh;z-index:110;pointer-events:none}
+
+/* responsive */
+@media (max-width:1100px){.brand small{display:none}}
+@media (max-width:980px){
+  .pick-layout{grid-template-columns:minmax(0,1fr)}
+  .preview{position:relative;top:0;min-height:300px}
+  .dash-grid{grid-template-columns:minmax(0,1fr)}
+  .span-2,.span-3{grid-column:auto}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .status span{display:none}
+  .status{padding:0 10px}
+}
+@media (max-width:860px){
+  .tr{grid-template-columns:34px minmax(0,1fr) auto;grid-template-areas:"no nick color" "no name color";gap:0 12px;padding:12px 14px}
+  .th{display:none}
+  .td-no{grid-area:no;align-self:center}
+  .td-nick{grid-area:nick}
+  .td-name{grid-area:name;font-size:.8rem}
+  .td-color{grid-area:color;justify-self:end;max-width:46vw}
+  .td-id,.td-fam,.td-time,.td-color code{display:none}
+}
+@media (max-width:720px){
+  .topbar{padding:10px 16px;gap:10px}
+  .tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;margin:0;padding:5px;background:var(--glass);-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);border-color:var(--line-2);box-shadow:var(--shadow)}
+  .tab{flex-direction:column;gap:2px;padding:7px 16px;font-size:.7rem}
+  .actions{margin-left:auto}
+  .icon-btn{width:36px;height:36px}
+  .savebar{bottom:calc(94px + env(safe-area-inset-bottom))}
+  main{padding-bottom:200px}
+  .toasts{bottom:calc(100px + env(safe-area-inset-bottom))}
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero-ring{display:none}
+  .people-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .mosaic{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .custom-fields{grid-template-columns:minmax(0,1fr)}
+  .kpi{min-height:136px;padding:16px}
+  .kpi .link{display:none}
+  .bar-row{grid-template-columns:60px minmax(0,1fr) 58px}
+}
+@media (max-width:420px){
+  .mosaic{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .people-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .person{padding:10px;gap:10px}
+  .person .dot{--s:32px}
+  .person .no{display:none}
+  .sw{width:42px;height:42px}
+  .harm{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .harm-sw{aspect-ratio:2/1}
+  .btn{padding:0 16px}
+}
+.survey-only .tabs{display:none!important}
+.survey-only .savebar{bottom:16px}
+.survey-only .toasts{bottom:24px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="brand" href="#survey" data-nav="survey" aria-label="Palette of Us หน้าแรก">
+    <span class="logo" aria-hidden="true"></span>
+    <span class="brand-text"><b>Palette of Us</b><small>พยบ. รุ่น 1 · วพบ.สุราษฎร์ธานี</small></span>
+  </a>
+  <nav class="tabs" role="tablist" aria-label="เมนูหลัก">
+    <button type="button" class="tab" role="tab" data-nav="survey" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.2" fill="currentColor"/><circle cx="17.5" cy="10.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="7.5" r="1.2" fill="currentColor"/><circle cx="6.5" cy="12.5" r="1.2" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></svg><span>เลือกสี</span></button>
+    <button type="button" class="tab" role="tab" data-nav="dashboard" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1.5"/><rect width="7" height="5" x="14" y="3" rx="1.5"/><rect width="7" height="9" x="14" y="12" rx="1.5"/><rect width="7" height="5" x="3" y="16" rx="1.5"/></svg><span>Dashboard</span></button>
+    <button type="button" class="tab" role="tab" data-nav="people" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>รายบุคคล</span></button>
+  </nav>
+  <div class="actions">
+    <span class="status" id="status" data-s="sync" title="กำลังเชื่อมต่อ"><i></i><span>SYNC</span></span>
+    <button type="button" class="icon-btn" id="btnRefresh" title="รีเฟรชข้อมูล" aria-label="รีเฟรชข้อมูล"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg></button>
+    <button type="button" class="icon-btn" id="btnTheme" title="สลับโหมดสว่าง/มืด" aria-label="สลับโหมดสว่าง/มืด"></button>
+    <button type="button" class="icon-btn" id="btnSettings" data-open="settings" title="ตั้งค่าการเชื่อมต่อ" aria-label="ตั้งค่าการเชื่อมต่อ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/></svg></button>
+  </div>
+</header>
+
+<div class="banner" id="demoBanner" hidden>
+  <div class="banner-in">
+    <span class="banner-dot"></span>
+    <p><b>โหมดสาธิต</b> — ยังไม่ได้เชื่อม Google Sheet รายชื่อที่เห็นเป็นข้อมูลตัวอย่าง และบันทึกไว้ในเบราว์เซอร์นี้เท่านั้น</p>
+    <button type="button" class="btn btn-ghost btn-sm" data-open="settings">เชื่อมต่อ API</button>
+  </div>
+</div>
+
+<main>
+  <!-- ═════════ SURVEY ═════════ -->
+  <section class="view" id="view-survey" aria-label="เลือกสีที่ชอบ">
+    <div class="step" id="step-who">
+      <div class="hero">
+        <div>
+          <div class="kicker">Color Survey · 2569</div>
+          <h1>สีไหนคือ<span class="grad">ตัวคุณ</span>?</h1>
+          <p class="lead">แตะชื่อของคุณ แล้วเลือกสีที่ชอบได้ตามใจ ระบบจะบันทึกลงคอลัมน์ “สีที่ชอบ” ใน Google Sheet ให้ทันที</p>
+        </div>
+        <div class="hero-ring" id="heroRing" aria-hidden="true"></div>
+      </div>
+      <div class="who-tools">
+        <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="whoSearch" type="search" placeholder="ค้นหาชื่อ ชื่อเล่น หรือรหัสนักศึกษา…" autocomplete="off" aria-label="ค้นหารายชื่อ"></label>
+        <div class="seg" id="whoFilter" role="group" aria-label="กรองรายชื่อ"></div>
+      </div>
+      <div class="people-grid" id="whoGrid" aria-live="polite"></div>
+    </div>
+
+    <div class="step" id="step-pick" hidden>
+      <button type="button" class="back" data-step="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7M19 12H5"/></svg>ไม่ใช่ฉัน / เปลี่ยนคน</button>
+      <div class="pick-layout">
+        <aside class="preview is-empty" id="preview" aria-live="polite"></aside>
+        <div class="pick-main">
+          <div class="pick-head"><h2 id="pickTitle"></h2><p id="pickSub"></p></div>
+          <div class="groups" id="groups"></div>
+          <div class="custom" id="customBox">
+            <label class="custom-sw is-rainbow" id="customSw" title="เลือกสีเอง"><input type="color" id="customColor" value="#7C5CFF" aria-label="เลือกสีเองจากวงล้อสี"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 22 1-1h3l9-9"/><path d="M3 21v-3l9-9"/><path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z"/></svg></label>
+            <div class="custom-text"><b>ผสมสีเอง</b><small>ไม่เจอสีที่ใช่? แตะวงล้อสีหรือพิมพ์รหัส HEX แล้วตั้งชื่อสีของคุณเอง</small></div>
+            <div class="custom-fields">
+              <input id="hexInput" class="input mono" maxlength="7" placeholder="#7C5CFF" spellcheck="false" autocomplete="off" aria-label="รหัสสี HEX">
+              <input id="customName" class="input" maxlength="30" placeholder="ตั้งชื่อสี (ไม่บังคับ) เช่น ฟ้าทะเลสมุย" autocomplete="off" aria-label="ชื่อสี">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="savebar" id="savebar">
+        <div class="savebar-chip"><span class="dot empty" id="sbDot"></span><span><b id="sbName">ยังไม่ได้เลือกสี</b><small id="sbHex">แตะสีที่ชอบด้านบน</small></span></div>
+        <button type="button" class="btn btn-pick" id="btnSave" disabled><span class="spinner"></span><span id="btnSaveText">บันทึกสีนี้</span><svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <div class="step" id="step-done" hidden><div class="done" id="doneBox"></div></div>
+  </section>
+
+  <!-- ═════════ DASHBOARD ═════════ -->
+  <section class="view" id="view-dashboard" hidden aria-label="Dashboard">
+    <div class="page-head">
+      <div><div class="kicker">Class Overview</div><h2 class="page-title">ภาพรวมสีของรุ่น</h2></div>
+      <div class="page-meta" id="dashMeta"></div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="dash-grid">
+      <article class="card span-2">
+        <header class="card-head">
+          <div><h3>พาเลตต์ของรุ่น</h3><p>1 ช่อง = นักศึกษา 1 คน · แตะเพื่อดูการ์ดสีรายบุคคล</p></div>
+          <div class="seg seg-sm" id="mosaicSort" role="group" aria-label="การเรียงพาเลตต์">
+            <button type="button" data-msort="no" aria-pressed="true">ตามลำดับ</button>
+            <button type="button" data-msort="tone" aria-pressed="false">ตามโทนสี</button>
+          </div>
+        </header>
+        <div class="mosaic" id="mosaic"></div>
+      </article>
+      <article class="card">
+        <header class="card-head"><div><h3>อันดับโทนสี</h3><p>แต่ละช่องในแท่ง = สีจริงที่แต่ละคนเลือก</p></div></header>
+        <div class="bars" id="famBars"></div>
+      </article>
+      <article class="card span-2">
+        <header class="card-head"><div><h3>สเปกตรัมของรุ่น</h3><p>ทุกสีที่ถูกเลือก เรียงตามโทน</p></div></header>
+        <div class="spectrum" id="spectrum"></div>
+        <h4 class="sub-h">เฉดยอดฮิต</h4>
+        <div class="shades" id="topShades"></div>
+      </article>
+      <article class="card">
+        <header class="card-head"><div><h3>ความเคลื่อนไหวล่าสุด</h3><p id="feedSub">อัปเดตอัตโนมัติทุก 30 วินาที</p></div></header>
+        <ol class="feed" id="feed"></ol>
+      </article>
+      <article class="card span-3" id="pendingCard">
+        <header class="card-head">
+          <div><h3>ยังไม่ได้เลือกสี <span class="count" id="pendingCount">0</span></h3><p>คัดลอกรายชื่อไปแจ้งในกลุ่ม LINE ได้เลย</p></div>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnCopyPending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>คัดลอกรายชื่อ</button>
+        </header>
+        <div class="chips" id="pendingChips"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═════════ PEOPLE ═════════ -->
+  <section class="view" id="view-people" hidden aria-label="ข้อมูลรายบุคคล">
+    <div class="page-head">
+      <div><div class="kicker">Individual</div><h2 class="page-title">ข้อมูลรายบุคคล</h2></div>
+      <button type="button" class="btn btn-ghost btn-sm" id="btnCsv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>ส่งออก CSV</button>
+    </div>
+    <div class="people-tools">
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="peopleSearch" type="search" placeholder="ค้นหาชื่อ ชื่อเล่น รหัส หรือชื่อสี…" autocomplete="off" aria-label="ค้นหาข้อมูลรายบุคคล"></label>
+      <select id="peopleSort" class="select" aria-label="เรียงลำดับ">
+        <option value="no">เรียงตามลำดับ</option>
+        <option value="nick">ชื่อเล่น ก–ฮ</option>
+        <option value="tone">ตามโทนสี</option>
+        <option value="recent">บันทึกล่าสุด</option>
+      </select>
+    </div>
+    <div class="chips chips-filter" id="peopleFilter" role="group" aria-label="กรองตามสถานะหรือโทนสี"></div>
+    <div class="table" id="peopleTable"></div>
+  </section>
+</main>
+
+<dialog id="dlgPerson" aria-label="การ์ดสีรายบุคคล"><div class="sheet" id="personSheet"></div></dialog>
+
+<dialog id="dlgSettings" aria-labelledby="setTitle">
+  <div class="sheet">
+    <div class="sheet-head">
+      <div><div class="kicker">Settings</div><h3 id="setTitle">ตั้งค่าการเชื่อมต่อ</h3></div>
+      <button type="button" class="icon-btn" data-close aria-label="ปิด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <label class="field">Google Apps Script · Web App URL
+        <input id="apiInput" class="input" type="url" placeholder="https://script.google.com/macros/s/……/exec" spellcheck="false" autocomplete="off">
+      </label>
+      <p class="hint">Deploy เป็น <b>Web app</b> โดยตั้ง Execute as: <code>Me</code> และ Who has access: <code>Anyone</code> แล้วคัดลอก URL ที่ลงท้ายด้วย <code>/exec</code> มาวาง (เว้นว่าง = โหมดสาธิต)</p>
+      <div class="test-result" id="testResult" hidden></div>
+      <div class="toggles">
+        <label class="toggle"><input type="checkbox" id="optMask"><span class="sw-ui"></span><span><b>ย่อนามสกุล (PDPA)</b><small>แสดงนามสกุลเป็นอักษรย่อ เหมาะกับการฉายขึ้นจอหน้าห้อง</small></span></label>
+        <label class="toggle"><input type="checkbox" id="optAuto"><span class="sw-ui"></span><span><b>รีเฟรชอัตโนมัติ</b><small>ดึงข้อมูลล่าสุดจาก Google Sheet ทุก 30 วินาที</small></span></label>
+      </div>
+    </div>
+    <div class="pf">
+      <button type="button" class="btn btn-ghost btn-sm" id="btnDemoReset">รีเซ็ตข้อมูลสาธิต</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="btnTest"><span class="spinner"></span>ทดสอบการเชื่อมต่อ</button>
+      <button type="button" class="btn btn-primary btn-sm" id="btnSaveSettings">บันทึก</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<canvas id="confetti" hidden></canvas>
+<noscript><p style="padding:24px;text-align:center">กรุณาเปิดใช้งาน JavaScript เพื่อใช้ระบบนี้</p></noscript>
+
+<script>
+(() => {
+'use strict';
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONFIG — วาง URL ของ Google Apps Script Web App (ลงท้ายด้วย /exec) ตรงนี้
+   หรือเปิดหน้าเว็บแล้วกดปุ่มตั้งค่า (⚙) มุมขวาบนก็ได้
+   ═══════════════════════════════════════════════════════════════════════ */
+const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycby5HEmX0x8zQG5Qaulm7eR8wdBEPr8U8bGdUHSTZTB3sM9aavHMD88eI_UolSPDbvIZ1Q/exec';
+const REFRESH_MS = 30000;
+
+/* ─────────────────────────── Color families & palette ─────────────────────────── */
+const FAMILIES = [
+  { key:'red',    th:'แดง',    rep:'#E5383B', meaning:'พลัง ความกล้า และความมุ่งมั่น พร้อมลุยทุกสถานการณ์' },
+  { key:'orange', th:'ส้ม',    rep:'#FF8A00', meaning:'ร่าเริง เป็นมิตร และเต็มไปด้วยไอเดียสร้างสรรค์' },
+  { key:'yellow', th:'เหลือง', rep:'#FFD400', meaning:'สดใส มองโลกในแง่ดี เป็นแสงสว่างให้คนรอบข้าง' },
+  { key:'green',  th:'เขียว',  rep:'#2DC653', meaning:'สงบ สมดุล และเยียวยา เป็นที่พึ่งพิงของทุกคน' },
+  { key:'sky',    th:'ฟ้า',    rep:'#4CC9F0', meaning:'ปลอดโปร่ง จริงใจ สื่อสารเก่ง ใครคุยด้วยก็สบายใจ' },
+  { key:'blue',   th:'น้ำเงิน', rep:'#3A56D4', meaning:'สุขุม มีหลักการ และน่าเชื่อถือ' },
+  { key:'purple', th:'ม่วง',   rep:'#8E44EC', meaning:'ช่างคิด มีจินตนาการ และลึกซึ้ง' },
+  { key:'pink',   th:'ชมพู',   rep:'#FF5DA2', meaning:'อ่อนโยน ใส่ใจ และเข้าใจความรู้สึกของผู้อื่น' },
+  { key:'brown',  th:'น้ำตาล', rep:'#8B5A2B', meaning:'มั่นคง อบอุ่น ติดดิน และไว้ใจได้' },
+  { key:'white',  th:'ขาว',    rep:'#F4F4F2', meaning:'เรียบง่าย ชัดเจน และบริสุทธิ์ใจ สีแห่งวิชาชีพพยาบาล' },
+  { key:'gray',   th:'เทา',    rep:'#9CA3AF', meaning:'มีเหตุผล วางตัวดี และรักษาสมดุลได้เก่ง' },
+  { key:'black',  th:'ดำ',     rep:'#16161A', meaning:'เท่ มั่นใจ และมีพลังภายในสูง' },
+  { key:'other',  th:'อื่น ๆ',  rep:'#777788', meaning:'มีสไตล์เป็นของตัวเอง ไม่เหมือนใคร' },
+];
+const FAM = Object.fromEntries(FAMILIES.map((f, i) => [f.key, { ...f, i }]));
+
+const PALETTE = [
+  ['red','แดงสด','#E63946'],['red','แดงเชอร์รี่','#D2042D'],['red','แดงมะเขือเทศ','#FF6347'],['red','แดงเลือดนก','#9B1B30'],['red','แดงไวน์','#722F37'],
+  ['orange','ส้มแสด','#FF7A00'],['orange','ส้มคอรัล','#FF7F50'],['orange','ส้มพีช','#FFB38A'],['orange','ส้มแอปริคอต','#FBCEB1'],['orange','ส้มอิฐ','#CB6843'],
+  ['yellow','เหลืองทานตะวัน','#FFDA03'],['yellow','เหลืองเลมอน','#FFF44F'],['yellow','เหลืองทอง','#FFC300'],['yellow','เหลืองมัสตาร์ด','#E1AD01'],['yellow','เหลืองครีม','#FFF1B5'],
+  ['green','เขียวมิ้นต์','#98E2C6'],['green','เขียวมะนาว','#A7D129'],['green','เขียวมรกต','#009B77'],['green','เขียวเซจ','#9CAF88'],['green','เขียวอะโวคาโด','#568203'],['green','เขียวป่า','#2D6A4F'],
+  ['sky','ฟ้าพาสเทล','#BDE0FE'],['sky','ฟ้าเบบี้บลู','#89CFF0'],['sky','ฟ้าใส','#7DD3FC'],['sky','ฟ้าคราม','#00B4D8'],['sky','ฟ้าเทอร์ควอยซ์','#2EC4B6'],
+  ['blue','น้ำเงินรอยัล','#4169E1'],['blue','น้ำเงินคราม','#3F37C9'],['blue','น้ำเงินไพลิน','#0F52BA'],['blue','น้ำเงินโคบอลต์','#0047AB'],['blue','น้ำเงินกรมท่า','#1D3557'],
+  ['purple','ม่วงพาสเทล','#E0BBE4'],['purple','ม่วงลาเวนเดอร์','#C3B1E1'],['purple','ม่วงไลแลค','#B57EDC'],['purple','ม่วงองุ่น','#6F2DBD'],['purple','ม่วงพลัม','#5A189A'],
+  ['pink','ชมพูพาสเทล','#FFC8DD'],['pink','ชมพูซากุระ','#F7A1C4'],['pink','ชมพูบาร์บี้','#FF69B4'],['pink','ชมพูกุหลาบ','#FF5D8F'],['pink','ชมพูบานเย็น','#E0218A'],
+  ['brown','น้ำตาลเบจ','#D8C3A5'],['brown','น้ำตาลชานม','#C4A484'],['brown','น้ำตาลคาราเมล','#A8642A'],['brown','น้ำตาลกาแฟ','#8B5E3C'],['brown','น้ำตาลช็อกโกแลต','#5D3A1A'],
+  ['white','ขาวบริสุทธิ์','#FFFFFF'],['white','ขาวงาช้าง','#F8F4E3'],['gray','เทาเงิน','#C0C0C0'],['gray','เทาหม่น','#8A8F98'],['gray','เทาชาร์โคล','#3A3A40'],['black','ดำสนิท','#111111'],
+].map(([family, name, hex]) => ({ family, name, hex }));
+const PALETTE_BY_HEX = new Map(PALETTE.map(p => [p.hex, p]));
+const GROUPS = [
+  { label:'แดง', fams:['red'] }, { label:'ส้ม', fams:['orange'] }, { label:'เหลือง', fams:['yellow'] },
+  { label:'เขียว', fams:['green'] }, { label:'ฟ้า', fams:['sky'] }, { label:'น้ำเงิน', fams:['blue'] },
+  { label:'ม่วง', fams:['purple'] }, { label:'ชมพู', fams:['pink'] }, { label:'น้ำตาล', fams:['brown'] },
+  { label:'ขาว · เทา · ดำ', fams:['white','gray','black'] },
+];
+const KEYWORDS = [
+  ['น้ำเงิน','blue'],['กรมท่า','blue'],['ฟ้า','sky'],['เทอร์ควอยซ์','sky'],['ชมพู','pink'],['บานเย็น','pink'],
+  ['ม่วง','purple'],['ลาเวนเดอร์','purple'],['ไลแลค','purple'],['แดง','red'],['ส้ม','orange'],['แสด','orange'],['พีช','orange'],
+  ['เหลือง','yellow'],['ทอง','yellow'],['เขียว','green'],['มิ้นต์','green'],['น้ำตาล','brown'],['เบจ','brown'],['ครีม','yellow'],
+  ['ขาว','white'],['ดำ','black'],['เทา','gray'],['เงิน','gray'],
+  ['sky','sky'],['light blue','sky'],['cyan','sky'],['turquoise','sky'],['navy','blue'],['blue','blue'],['pink','pink'],['magenta','pink'],
+  ['purple','purple'],['violet','purple'],['lavender','purple'],['red','red'],['orange','orange'],['yellow','yellow'],['gold','yellow'],
+  ['green','green'],['mint','green'],['brown','brown'],['beige','brown'],['white','white'],['black','black'],['gray','gray'],['grey','gray'],['silver','gray'],
+];
+const DEFAULT_GLOW = ['#7C3AED', '#EC4899', '#06B6D4'];
+
+const ICON = {
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+  copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>',
+  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+  users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1.5"/><rect width="7" height="5" x="14" y="3" rx="1.5"/><rect width="7" height="9" x="14" y="12" rx="1.5"/><rect width="7" height="5" x="3" y="16" rx="1.5"/></svg>',
+  palette:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.2" fill="currentColor"/><circle cx="17.5" cy="10.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="7.5" r="1.2" fill="currentColor"/><circle cx="6.5" cy="12.5" r="1.2" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></svg>',
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>',
+  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
+};
+
+/* ─────────────────────────── Utilities ─────────────────────────── */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const pad = n => (n == null || n === '' ? '—' : String(n).padStart(2, '0'));
+const isHex = h => /^#[0-9A-F]{6}$/i.test(String(h || ''));
+const normQ = s => String(s || '').toLowerCase().replace(/\s+/g, '');
+const store = {
+  get(k, d = null) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+  del(k) { try { localStorage.removeItem(k); } catch (e) {} },
+};
+const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmtDT = new Intl.DateTimeFormat('th-TH', { day:'numeric', month:'short', year:'2-digit', hour:'2-digit', minute:'2-digit' });
+function ago(d) {
+  if (!d || isNaN(d)) return '—';
+  const s = (Date.now() - d.getTime()) / 1000;
+  if (s < 45) return 'เมื่อสักครู่';
+  if (s < 3600) return Math.round(s / 60) + ' นาทีที่แล้ว';
+  if (s < 86400) return Math.round(s / 3600) + ' ชั่วโมงที่แล้ว';
+  if (s < 86400 * 7) return Math.round(s / 86400) + ' วันที่แล้ว';
+  return fmtDT.format(d);
+}
+
+/* color math */
+function hexToRgb(hex) { const n = parseInt(hex.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+function rgbToHex(r, g, b) { return '#' + [r, g, b].map(v => clamp(Math.round(v), 0, 255).toString(16).padStart(2, '0')).join('').toUpperCase(); }
+function hslOf(hex) {
+  const [r, g, b] = hexToRgb(hex).map(v => v / 255);
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn, l = (mx + mn) / 2;
+  const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+  let h = 0;
+  if (d) { if (mx === r) h = 60 * (((g - b) / d) % 6); else if (mx === g) h = 60 * ((b - r) / d + 2); else h = 60 * ((r - g) / d + 4); }
+  if (h < 0) h += 360;
+  return { h, s, l, v: mx, c: d, sv: mx ? d / mx : 0 };
+}
+function hslToHex(h, s, l) {
+  const k = n => (n + h / 30) % 12, a = s * Math.min(l, 1 - l);
+  const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return rgbToHex(f(0) * 255, f(8) * 255, f(4) * 255);
+}
+function mix(a, b, t) { const A = hexToRgb(a), B = hexToRgb(b); return rgbToHex(A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t, A[2] + (B[2] - A[2]) * t); }
+function lum(hex) { const c = hexToRgb(hex).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; }
+function inkFor(hex) { const L = lum(hex); return (1.05 / (L + 0.05)) >= ((L + 0.05) / 0.0565) ? '#FFFFFF' : '#111118'; }
+const isLight = hex => lum(hex) > 0.6;
+const inkSoft = hex => inkFor(hex) === '#FFFFFF' ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.09)';
+function colorVars(hex) { return `--c:${hex};--ci:${inkFor(hex)};--ci-soft:${inkSoft(hex)}`; }
+
+function familyOf(hex) {
+  const { h, l, v, c, sv } = hslOf(hex);
+  if (l < 0.10) return 'black';
+  if (c < 0.10) return l > 0.85 ? 'white' : (l < 0.16 ? 'black' : 'gray');
+  if (l > 0.92 && c < 0.25) return 'white';
+  if (h >= 10 && h < 50) { if (v < 0.70) return 'brown'; if (sv < 0.35 && v < 0.95) return 'brown'; }
+  if (h < 12 || h >= 345) return l > 0.72 ? 'pink' : 'red';
+  if (h < 42) return 'orange';
+  if (h < 68) return v < 0.6 ? 'green' : 'yellow';
+  if (h < 170) return 'green';
+  if (h < 195) return 'sky';
+  if (h < 250) return l >= 0.6 ? 'sky' : 'blue';
+  if (h < 305) return 'purple';
+  return 'pink';
+}
+const famOfHex = hex => (PALETTE_BY_HEX.get(hex) || {}).family || familyOf(hex);
+function nearestPalette(hex) {
+  const [r, g, b] = hexToRgb(hex); let best = null, bd = Infinity;
+  for (const p of PALETTE) {
+    const [R, G, B] = hexToRgb(p.hex), rm = (r + R) / 2;
+    const d = Math.sqrt((2 + rm / 256) * (r - R) ** 2 + 4 * (g - G) ** 2 + (2 + (255 - rm) / 256) * (b - B) ** 2);
+    if (d < bd) { bd = d; best = p; }
+  }
+  return { p: best, d: bd };
+}
+function autoName(hex) {
+  const n = nearestPalette(hex);
+  if (n.d < 30) return n.p.name;
+  return FAM[familyOf(hex)].th + 'เฉดพิเศษ';
+}
+function harmonies(hex) {
+  const { h, s, l } = hslOf(hex);
+  if (s < 0.12 || l < 0.08 || l > 0.95) {
+    return [['อ่อนลง', 0.35], ['อ่อนมาก', 0.7], ['เข้มขึ้น', -0.35], ['เข้มมาก', -0.7]].map(([label, t]) => ({ label, hex: t > 0 ? mix(hex, '#FFFFFF', t) : mix(hex, '#000000', -t) }));
+  }
+  const mk = (dh, label) => ({ label, hex: hslToHex((h + dh + 360) % 360, s, l) });
+  return [mk(180, 'คู่ตรงข้าม'), mk(-30, 'ใกล้เคียง −30°'), mk(30, 'ใกล้เคียง +30°'), mk(120, 'สามเส้า')];
+}
+function toneKey(c) { if (!c) return 1e6; return FAM[c.family].i * 10 + (1 - hslOf(c.hex).l); }
+
+function parseColorText(raw) {
+  raw = String(raw == null ? '' : raw).trim();
+  if (!raw) return null;
+  const m1 = raw.match(/#([0-9a-f]{6})\b/i);
+  const m = m1 || raw.match(/^([0-9a-f]{6})$/i);
+  let name = (m1 ? raw.replace(/\(?\s*#[0-9a-f]{6}\s*\)?/i, ' ') : m ? '' : raw).replace(/\s{2,}/g, ' ').trim();
+  if (m) {
+    const hex = '#' + m[1].toUpperCase();
+    const p = PALETTE_BY_HEX.get(hex);
+    if (!name) name = p ? p.name : autoName(hex);
+    return { hex, name, family: p ? p.family : familyOf(hex), approx: false };
+  }
+  const low = name.toLowerCase();
+  const hit = KEYWORDS.find(([k]) => low.includes(k));
+  const family = hit ? hit[1] : 'other';
+  return { hex: FAM[family].rep, name, family, approx: true };
+}
+
+/* ─────────────────────────── State ─────────────────────────── */
+const params = new URLSearchParams(location.search);
+let API_URL = String(store.get('pou.api', '') || DEFAULT_API_URL || '').trim();
+if (params.get('api')) { API_URL = params.get('api').trim(); store.set('pou.api', API_URL); }
+const isDemo = () => !API_URL;
+const SURVEY_ONLY = params.get('mode') === 'survey';
+
+const state = {
+  students: [], loaded: false, loading: false, saving: false,
+  view: 'survey', step: 'who', currentId: null, pick: null,
+  whoQ: '', whoF: 'all', mosaicSort: 'no', peopleQ: '', peopleF: 'all', peopleSort: 'no',
+  lastSync: null, meta: {}, lastError: '',
+  opts: { mask: !!store.get('pou.mask', false), auto: store.get('pou.auto', true) !== false },
+};
+const byId = id => state.students.find(s => s.id === String(id));
+const current = () => byId(state.currentId);
+
+const TITLE_RE = /^(นางสาว|นาง|นาย|น\.ส\.|ว่าที่\s*ร\.?ต\.?\s*(?:หญิง)?|miss|mrs\.?|mr\.?|ms\.?)\s*/i;
+function normalize(r) {
+  const nameRaw = String(r.name || '').trim();
+  const t = nameRaw.match(TITLE_RE);
+  const first = nameRaw.replace(TITLE_RE, '').trim();
+  const updatedAt = r.updatedAt ? new Date(r.updatedAt) : null;
+  return {
+    raw: r, id: String(r.id == null ? '' : r.id).trim(), no: Number(r.no) || null,
+    title: t ? t[1] : '', first, surname: String(r.surname || '').trim(),
+    nickname: String(r.nickname || '').trim() || first || String(r.id),
+    color: parseColorText(r.color),
+    updatedAt: updatedAt && !isNaN(updatedAt) ? updatedAt : null,
+  };
+}
+function abbr(s) { if (!s) return ''; const m = s.match(/^[เแโใไ]?[ก-ฮA-Za-z]/); return (m ? m[0] : s.slice(0, 1)) + '.'; }
+const fullName = s => `${s.first} ${state.opts.mask ? abbr(s.surname) : s.surname}`.trim();
+const formalName = s => `${s.title}${s.first} ${state.opts.mask ? abbr(s.surname) : s.surname}`.trim();
+
+function computeStats() {
+  const all = state.students;
+  const answered = all.filter(s => s.color);
+  const pending = all.filter(s => !s.color);
+  const famMap = new Map();
+  answered.forEach(s => { const k = s.color.family; if (!famMap.has(k)) famMap.set(k, []); famMap.get(k).push(s); });
+  const famRank = [...famMap.entries()].map(([k, list]) => ({ k, n: list.length, list: list.slice().sort((a, b) => toneKey(a.color) - toneKey(b.color)) }))
+    .sort((a, b) => b.n - a.n || FAM[a.k].i - FAM[b.k].i);
+  const shadeMap = new Map();
+  answered.forEach(s => { const key = s.color.hex + '|' + s.color.name; const e = shadeMap.get(key) || { hex: s.color.hex, name: s.color.name, n: 0 }; e.n++; shadeMap.set(key, e); });
+  const shades = [...shadeMap.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name, 'th'));
+  return { all, answered, pending, famRank, shades };
+}
+
+/* ─────────────────────────── Data layer ─────────────────────────── */
+function buildUrl(base, p) {
+  const q = new URLSearchParams({ ...p, t: Date.now() });
+  return base + (base.includes('?') ? '&' : '?') + q.toString();
+}
+function jsonp(base, p, timeout = 20000) {
+  return new Promise((resolve, reject) => {
+    const cb = '__pou' + Math.random().toString(36).slice(2);
+    const s = document.createElement('script');
+    const timer = setTimeout(() => { cleanup(); reject(new Error('หมดเวลาเชื่อมต่อ')); }, timeout);
+    function cleanup() { clearTimeout(timer); try { delete window[cb]; } catch (e) { window[cb] = undefined; } s.remove(); }
+    window[cb] = data => { cleanup(); resolve(data); };
+    s.onerror = () => { cleanup(); reject(new Error('เชื่อมต่อ API ไม่ได้ — ตรวจ URL และสิทธิ์ Who has access: Anyone')); };
+    s.src = buildUrl(base, { ...p, callback: cb });
+    document.head.appendChild(s);
+  });
+}
+async function parseRes(res) {
+  const text = await res.text();
+  try { return JSON.parse(text); }
+  catch (e) { throw new Error('API ไม่ได้ตอบกลับเป็น JSON — ตรวจว่า Deploy เป็น Web app แบบ Anyone และใช้ URL /exec'); }
+}
+const api = {
+  async get(p, base = API_URL) {
+    let res;
+    try { res = await fetch(buildUrl(base, p), { method: 'GET', redirect: 'follow', cache: 'no-store' }); }
+    catch (e) { return jsonp(base, p); }
+    return parseRes(res);
+  },
+  async save(payload, base = API_URL) {
+    let res;
+    try {
+      res = await fetch(base, { method: 'POST', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'save', ...payload }) });
+    } catch (e) { return jsonp(base, { action: 'save', ...payload }); }
+    return parseRes(res);
+  },
+};
+
+const demo = {
+  KEY: 'pou.demo.v1',
+  build() {
+    let seed = 2569;
+    const R = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    const names = ['นางสาวกานต์ธิดา','นางสาวชลธิชา','นายธนวัฒน์','นางสาวณัฐวดี','นางสาวธนพร','นางสาวนภัสสร','นายกิตติพงษ์','นางสาวปวีณา','นางสาวพิมพ์ชนก','นางสาวภัทราภรณ์',
+      'นายณัฐพล','นางสาวรัตนาภรณ์','นางสาววรรณิษา','นางสาวศศิธร','นายภานุวัฒน์','นางสาวสุภาวดี','นางสาวอรอุมา','นางสาวกชกร','นายวีรภัทร','นางสาวจิราพร',
+      'นางสาวฐิติมา','นางทิพวรรณ','นายศุภกร','นางสาวเบญจวรรณ','นางสาวปิยะนุช','นางสาวมณีรัตน์','นายอนุชา','นางสาวลลิตา','นางสาววิภาวี','นางสาวสุดารัตน์',
+      'นายปฏิภาณ','นางสาวอาภัสรา','นางสาวกมลวรรณ','นางสาวชุติมา','นายชยพล','นางสาวดารุณี','นางสาวนันทิดา','นางประภาพร','นายธีรเดช','นางสาวพรทิพย์',
+      'นางสาวยุพาวดี','นายพงศกร','นางสาววาสนา','นางสาวสิริพร','นายสิทธิชัย','นางสาวอัญชลี','นางสาวเกศินี','นายนพดล','นางสาวธิดารัตน์','นายเอกชัย'];
+    const lasts = ['ใจดี','สุขสวัสดิ์','ทองคำ','ศรีสุข','แก้วมณี','บุญมา','รุ่งเรือง','วงศ์ไทย','มีสุข','ชัยมงคล','พรหมทอง','เพชรรัตน์','ทองดี','แสงทอง','บุญเรือง','ศรีวิไล','จันทร์เพ็ญ','สมบูรณ์','ทิพย์มณี','นิลสุวรรณ','ดวงแก้ว','คงเจริญ','ภักดี','รักษ์ไทย','เรืองศรี'];
+    const nicks = ['แพรว','มิ้นท์','กาย','ฟ้า','ปอ','แนน','บีม','ไอซ์','น้ำหวาน','เฟิร์น','ภูมิ','พลอย','เบล','ออม','นิว','โบว์','ตาล','มายด์','โอ๊ต','จูน',
+      'ฝน','ข้าวหอม','บอส','ปุยฝ้าย','เมฆ','ส้มโอ','ต้น','ก้อย','แจน','ดาว','เจ','ป่าน','อิง','ตูน','กล้า','มุก','แตงโม','ใบบัว','เอิร์ธ','เนย',
+      'จอย','ปาล์ม','หมิว','ปิ่น','ณัฐ','ฟาง','นุ่น','เต้','ขิม','ภู'];
+    const weight = { pink:6, sky:5, blue:3, purple:4, green:4, red:2, yellow:2, orange:2, brown:2, white:2, gray:1, black:2 };
+    const pool = PALETTE.flatMap(p => Array(weight[p.family] || 1).fill(p));
+    const now = Date.now();
+    return names.map((name, i) => {
+      const answered = R() < 0.68;
+      const p = pool[Math.floor(R() * pool.length)];
+      return {
+        row: 6 + i, id: '690000000' + String(i + 1).padStart(2, '0'), no: i + 1, name, surname: lasts[i % lasts.length], nickname: nicks[i],
+        color: answered ? `${p.name} (${p.hex})` : '', updatedAt: answered ? new Date(now - R() * 3 * 86400000).toISOString() : null,
+      };
+    });
+  },
+  data() { let d = store.get(this.KEY); if (!Array.isArray(d) || !d.length) { d = this.build(); store.set(this.KEY, d); } return d; },
+  wait: ms => new Promise(r => setTimeout(r, ms)),
+  async list() { await this.wait(320); return { ok: true, title: 'ข้อมูลสาธิต', sheet: 'DEMO', students: this.data(), serverTime: new Date().toISOString() }; },
+  async save(p) {
+    await this.wait(650);
+    const d = this.data(); const s = d.find(x => x.id === p.id);
+    if (!s) return { ok: false, error: 'ไม่พบรหัสนักศึกษา' };
+    s.color = `${p.name} (${p.hex})`; s.updatedAt = new Date().toISOString(); store.set(this.KEY, d);
+    return { ok: true, student: s };
+  },
+  reset() { store.del(this.KEY); },
+};
+
+function applyData(data) {
+  state.students = (data.students || []).map(normalize).filter(s => s.id).sort((a, b) => (a.no || 9999) - (b.no || 9999));
+  state.meta = { sheet: data.sheet, title: data.title };
+  state.loaded = true;
+}
+
+async function load({ silent = false } = {}) {
+  if (state.loading) return;
+  state.loading = true; setStatus('sync');
+  $('#btnRefresh').classList.add('is-spinning');
+  try {
+    const data = isDemo() ? await demo.list() : await api.get({ action: 'list' });
+    if (!data || !data.ok) throw new Error((data && data.error) || 'โหลดข้อมูลไม่สำเร็จ');
+    applyData(data);
+    state.lastSync = new Date(); state.lastError = '';
+    if (!isDemo()) store.set('pou.cache', { url: API_URL, at: Date.now(), data });
+    setStatus(isDemo() ? 'demo' : 'live');
+  } catch (err) {
+    state.lastError = err.message || String(err);
+    setStatus('error');
+    if (!silent) toast('เชื่อมต่อไม่สำเร็จ: ' + state.lastError, 'error');
+  } finally {
+    state.loading = false;
+    $('#btnRefresh').classList.remove('is-spinning');
+    renderAll();
+  }
+}
+
+async function saveColor() {
+  const s = current(), p = state.pick;
+  if (!s || !p || state.saving) return;
+  state.saving = true; setSaving(true);
+  try {
+    const payload = { id: s.id, hex: p.hex, name: (p.name || '').trim() || autoName(p.hex) };
+    const res = isDemo() ? await demo.save(payload) : await api.save(payload);
+    if (!res || !res.ok) throw new Error((res && res.error) || 'บันทึกไม่สำเร็จ');
+    const raw = res.student || { ...s.raw, color: `${payload.name} (${payload.hex})`, updatedAt: new Date().toISOString() };
+    const updated = normalize({ ...s.raw, ...raw });
+    state.students = state.students.map(x => (x.id === s.id ? updated : x));
+    goStep('done');
+    confetti(payload.hex);
+    toast(isDemo() ? 'บันทึกแล้ว (โหมดสาธิต)' : 'บันทึกลง Google Sheet เรียบร้อย');
+  } catch (err) {
+    toast('บันทึกไม่สำเร็จ: ' + (err.message || err), 'error');
+  } finally {
+    state.saving = false; setSaving(false);
+  }
+}
+function setSaving(on) {
+  const b = $('#btnSave');
+  b.classList.toggle('is-loading', on);
+  b.disabled = on || !state.pick;
+  $('#btnSaveText').textContent = on ? 'กำลังบันทึก…' : 'บันทึกสีนี้';
+}
+
+/* ─────────────────────────── Navigation ─────────────────────────── */
+const VIEWS = ['survey', 'dashboard', 'people'];
+function viewFromHash() { const h = location.hash.replace('#', ''); return VIEWS.includes(h) ? h : 'survey'; }
+function setView(v, updateHash = true) {
+  if (SURVEY_ONLY) v = 'survey';
+  state.view = v;
+  VIEWS.forEach(k => { $('#view-' + k).hidden = k !== v; });
+  $$('.tab').forEach(t => t.setAttribute('aria-selected', String(t.dataset.nav === v)));
+  if (updateHash && location.hash !== '#' + v) history.replaceState(null, '', '#' + v);
+  if ((v === 'dashboard' || v === 'people') && state.lastSync && Date.now() - state.lastSync > 15000) load({ silent: true });
+  renderAll();
+  updateAmbient();
+  window.scrollTo(0, 0);
+}
+function goStep(step) {
+  state.step = step;
+  ['who', 'pick', 'done'].forEach(k => { $('#step-' + k).hidden = k !== step; });
+  if (step === 'who') { state.pick = null; }
+  renderSurvey();
+  updateAmbient();
+  window.scrollTo(0, 0);
+}
+function openPick(id) {
+  const s = byId(id); if (!s) return;
+  state.currentId = s.id;
+  state.pick = s.color && !s.color.approx ? { hex: s.color.hex, name: s.color.name, custom: !PALETTE_BY_HEX.has(s.color.hex), existing: true } : null;
+  const ci = $('#customName'), hi = $('#hexInput');
+  ci.value = state.pick && state.pick.custom ? state.pick.name : '';
+  hi.value = state.pick && state.pick.custom ? state.pick.hex : '';
+  hi.classList.remove('is-invalid');
+  if (state.view !== 'survey') setView('survey');
+  goStep('pick');
+}
+
+/* ─────────────────────────── Rendering ─────────────────────────── */
+function renderAll() {
+  renderTheme();
+  $('#demoBanner').hidden = !isDemo();
+  if (state.view === 'survey') renderSurvey();
+  if (state.view === 'dashboard') renderDash();
+  if (state.view === 'people') renderPeople();
+}
+function setStatus(s) {
+  const el = $('#status'); el.dataset.s = s;
+  const label = { live: 'LIVE', demo: 'DEMO', error: 'OFFLINE', sync: 'SYNC' }[s];
+  el.querySelector('span').textContent = label;
+  el.title = s === 'live' ? 'เชื่อมต่อ Google Sheet แล้ว' + (state.meta.sheet ? ' · ชีต ' + state.meta.sheet : '')
+    : s === 'demo' ? 'โหมดสาธิต (ยังไม่ได้ตั้งค่า API)' : s === 'error' ? 'เชื่อมต่อไม่สำเร็จ: ' + state.lastError : 'กำลังซิงก์ข้อมูล…';
+}
+
+function renderSurvey() {
+  if (state.step === 'who') renderWho();
+  else if (state.step === 'pick') renderPick();
+  else renderDone();
+}
+
+function renderWho() {
+  const all = state.students, done = all.filter(s => s.color).length;
+  $('#whoFilter').innerHTML = [['all', 'ทั้งหมด', all.length], ['todo', 'ยังไม่เลือก', all.length - done], ['done', 'เลือกแล้ว', done]]
+    .map(([k, l, n]) => `<button type="button" data-whof="${k}" aria-pressed="${state.whoF === k}">${l}<span class="n">${n}</span></button>`).join('');
+  renderHeroRing(done, all.length);
+  const grid = $('#whoGrid');
+  if (!state.loaded) { grid.innerHTML = state.lastError ? `<div class="empty-state">โหลดรายชื่อไม่สำเร็จ — ${esc(state.lastError)}<br><br><button type="button" class="btn btn-ghost btn-sm" data-open="settings">ตรวจการตั้งค่า API</button></div>` : '<div class="skel"></div>'.repeat(12); return; }
+  const q = normQ(state.whoQ);
+  const list = all.filter(s => (state.whoF === 'all' || (state.whoF === 'done') === !!s.color) && (!q || matchQ(s, q)));
+  grid.innerHTML = list.length ? list.map(personCard).join('') : `<div class="empty-state">${q ? 'ไม่พบรายชื่อที่ค้นหา' : state.whoF === 'todo' ? 'ทุกคนเลือกสีครบแล้ว 🎉' : 'ยังไม่มีรายชื่อ'}</div>`;
+}
+function matchQ(s, q, withColor) {
+  const fields = [s.nickname, s.first, s.surname, s.first + s.surname, s.id, String(s.no || '')];
+  if (withColor && s.color) fields.push(s.color.name, s.color.hex, FAM[s.color.family].th);
+  return fields.some(v => normQ(v).includes(q));
+}
+function personCard(s) {
+  const c = s.color;
+  const dot = c ? `<span class="dot${isLight(c.hex) ? ' is-light' : ''}" style="${colorVars(c.hex)}">${ICON.check}</span>` : '<span class="dot empty"></span>';
+  return `<button type="button" class="person" data-pick-person="${esc(s.id)}" aria-label="${esc(s.nickname)} ${esc(fullName(s))}${c ? ' เลือกแล้ว: ' + esc(c.name) : ''}">
+    ${dot}<span class="person-text"><span class="nick">${esc(s.nickname)}</span><span class="full">${esc(fullName(s))}</span></span><span class="no">${pad(s.no)}</span></button>`;
+}
+function renderHeroRing(done, total) {
+  const pct = total ? done / total : 0, r = 54, C = 2 * Math.PI * r;
+  $('#heroRing').innerHTML = `<svg viewBox="0 0 132 132"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5DA2"/><stop offset=".35" stop-color="#FFD400"/><stop offset=".65" stop-color="#4CC9F0"/><stop offset="1" stop-color="#8E44EC"/></linearGradient></defs>
+    <circle cx="66" cy="66" r="${r}" fill="none" stroke="var(--line-2)" stroke-width="8"/>
+    <circle cx="66" cy="66" r="${r}" fill="none" stroke="url(#rg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C.toFixed(2)}" stroke-dashoffset="${(C * (1 - pct)).toFixed(2)}" transform="rotate(-90 66 66)"/></svg>
+    <div class="ring-text"><b>${done}<small>/${total}</small></b><span>เลือกสีแล้ว</span></div>`;
+}
+
+let lastGroupsHtml = '';
+function renderPick() {
+  const s = current(); if (!s) { goStep('who'); return; }
+  $('#pickTitle').innerHTML = `สวัสดี ${esc(s.nickname)} เลือกสีที่ใช่สำหรับคุณ`;
+  $('#pickSub').textContent = `${formalName(s)} · รหัส ${s.id}` + (s.color ? ` · สีเดิม: ${s.color.name}` : '');
+  renderGroups();
+  updatePick();
+}
+function renderGroups() {
+  const counts = new Map();
+  state.students.forEach(x => { if (x.color) counts.set(x.color.family, (counts.get(x.color.family) || 0) + 1); });
+  const html = GROUPS.map(g => {
+    const n = g.fams.reduce((a, f) => a + (counts.get(f) || 0), 0);
+    const items = PALETTE.filter(p => g.fams.includes(p.family));
+    return `<div class="group"><div class="group-head"><span>${g.label}</span><span class="group-n">${n ? `เพื่อนเลือก ${n} คน` : ''}</span></div>
+      <div class="swatches">${items.map(p => `<button type="button" class="sw${isLight(p.hex) ? ' is-light' : ''}" style="${colorVars(p.hex)}" data-hex="${p.hex}" data-tt="${esc(p.name)}" data-ts="${p.hex}" data-tc="${p.hex}" aria-label="${esc(p.name)} ${p.hex}"></button>`).join('')}</div></div>`;
+  }).join('');
+  if (html !== lastGroupsHtml) { $('#groups').innerHTML = html; lastGroupsHtml = html; }
+}
+function updatePick() {
+  const p = state.pick, s = current(); if (!s) return;
+  $$('#groups .sw').forEach(el => {
+    const on = !!p && !p.custom && el.dataset.hex === p.hex;
+    el.classList.toggle('on', on); el.setAttribute('aria-pressed', String(on));
+  });
+  const box = $('#customBox'), csw = $('#customSw');
+  box.classList.toggle('on', !!(p && p.custom));
+  if (p && p.custom) { csw.classList.remove('is-rainbow'); csw.setAttribute('style', colorVars(p.hex)); $('#customColor').value = p.hex.toLowerCase(); }
+  else { csw.classList.add('is-rainbow'); csw.removeAttribute('style'); }
+
+  const pv = $('#preview');
+  if (p) {
+    const fam = FAM[famOfHex(p.hex)];
+    const friends = state.students.filter(x => x.id !== s.id && x.color && x.color.family === fam.key).length;
+    const [r, g, b] = hexToRgb(p.hex);
+    pv.classList.remove('is-empty'); pv.setAttribute('style', colorVars(p.hex));
+    pv.innerHTML = `<div class="pv-top"><span>PALETTE OF US</span><span>NO. ${pad(s.no)}</span></div>
+      <div><div class="pv-label">สีของ ${esc(s.nickname)}${p.existing ? ' (สีเดิม)' : ''}</div><div class="pv-name">${esc(p.name)}</div><div class="pv-hex">${p.hex} · RGB ${r}, ${g}, ${b}</div></div>
+      <div><span class="pv-chip">โทน${fam.th}</span><p class="pv-meaning">${fam.meaning}</p>
+      <p class="pv-friends">${friends ? `มีเพื่อน ${friends} คนที่ชอบโทน${fam.th}เหมือนคุณ` : `ยังไม่มีใครเลือกโทน${fam.th} คุณอาจเป็นคนแรก!`}</p></div>`;
+  } else {
+    pv.classList.add('is-empty'); pv.removeAttribute('style');
+    pv.innerHTML = `<div class="pv-top"><span>PALETTE OF US</span><span>NO. ${pad(s.no)}</span></div>
+      <div><p class="pv-empty-title">การ์ดสีของ<br>${esc(s.nickname)}</p><p class="pv-empty-sub">แตะสีที่ชอบ หรือผสมสีเองด้านล่าง แล้วดูตัวอย่างการ์ดสีของคุณที่นี่</p></div><div></div>`;
+  }
+  const dot = $('#sbDot');
+  if (p) { dot.className = 'dot' + (isLight(p.hex) ? ' is-light' : ''); dot.setAttribute('style', colorVars(p.hex)); $('#sbName').textContent = p.name; $('#sbHex').textContent = p.hex + ' · โทน' + FAM[famOfHex(p.hex)].th; }
+  else { dot.className = 'dot empty'; dot.removeAttribute('style'); $('#sbName').textContent = 'ยังไม่ได้เลือกสี'; $('#sbHex').textContent = 'แตะสีที่ชอบด้านบน'; }
+  $('#btnSave').disabled = !p || state.saving;
+  updateAmbient();
+}
+function setPick(hex, name, custom) {
+  state.pick = { hex, name, custom: !!custom };
+  if (!custom) { $('#customName').value = ''; $('#hexInput').value = ''; $('#hexInput').classList.remove('is-invalid'); }
+  updatePick();
+}
+function setCustom(hex) {
+  hex = hex.toUpperCase();
+  const typed = $('#customName').value.trim();
+  setPick(hex, typed || autoName(hex), true);
+}
+
+function renderDone() {
+  const s = current(); if (!s || !s.color) { goStep('who'); return; }
+  const c = s.color, fam = FAM[c.family];
+  const all = state.students, done = all.filter(x => x.color).length;
+  const same = all.filter(x => x.color && x.id !== s.id && x.color.family === c.family).length;
+  $('#doneBox').innerHTML = `
+    <div class="done-card" style="${colorVars(c.hex)}">
+      <div class="done-badge">${ICON.check}</div>
+      <div class="kicker kicker-th">${isDemo() ? 'บันทึกแล้ว · โหมดสาธิต' : 'บันทึกลง Google Sheet แล้ว'}</div>
+      <h2>${esc(s.nickname)} × ${esc(c.name)}</h2>
+      <div class="done-hex">${c.hex} · โทน${fam.th}</div>
+    </div>
+    <p class="done-stats">ตอนนี้เลือกสีแล้ว <b>${done}</b> จาก ${all.length} คน · ${same ? `มีเพื่อนอีก <b>${same}</b> คนที่ชอบโทน${fam.th}เหมือนกัน` : `คุณเป็นคนแรกของรุ่นที่เลือกโทน${fam.th}!`}</p>
+    <div class="done-actions">
+      <button type="button" class="btn btn-primary" data-step="who">${ICON.users}ให้คนถัดไปเลือก</button>
+      ${SURVEY_ONLY ? '' : `<button type="button" class="btn btn-ghost" data-nav="dashboard">${ICON.dash}ดู Dashboard</button>`}
+      <button type="button" class="btn btn-ghost" data-repick="${esc(s.id)}">${ICON.palette}เปลี่ยนสี</button>
+    </div>`;
+}
+
+function tileHtml(s) {
+  const c = s.color;
+  if (!c) return `<button type="button" class="tile empty" data-person="${esc(s.id)}" data-tt="${esc(s.nickname)}" data-ts="ยังไม่ได้เลือกสี" aria-label="${esc(s.nickname)} ยังไม่ได้เลือกสี"><span>${esc(s.nickname)}</span></button>`;
+  return `<button type="button" class="tile${isLight(c.hex) ? ' is-light' : ''}" style="${colorVars(c.hex)}" data-person="${esc(s.id)}" data-tt="${esc(s.nickname)} · ${esc(c.name)}" data-ts="${c.hex} · โทน${FAM[c.family].th}" data-tc="${c.hex}" aria-label="${esc(s.nickname)} เลือก ${esc(c.name)}"><span>${esc(s.nickname)}</span></button>`;
+}
+
+function renderDash() {
+  const st = computeStats(), total = st.all.length, done = st.answered.length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  $('#dashMeta').innerHTML = state.lastSync ? `อัปเดต ${ago(state.lastSync)}${state.meta.sheet ? ' · ชีต ' + esc(state.meta.sheet) : ''}` : (state.lastError ? 'เชื่อมต่อไม่สำเร็จ' : 'กำลังโหลด…');
+
+  const top = st.famRank[0];
+  const ties = top ? st.famRank.filter(f => f.n === top.n) : [];
+  const uniq = new Set(st.answered.map(s => s.color.hex)).size;
+  $('#kpis').innerHTML = `
+    <div class="kpi"><span class="kpi-label">เลือกสีแล้ว</span><div class="kpi-value">${done}<small>/ ${total} คน</small></div><div class="meter" role="img" aria-label="ตอบแล้ว ${pct}%"><i style="--w:${pct}%"></i></div><span class="kpi-sub">${pct}% ของรุ่น</span></div>
+    <div class="kpi"><span class="kpi-label">โทนสียอดนิยม</span>${top ? `<div class="kpi-value is-text"><span class="dot${isLight(FAM[top.k].rep) ? ' is-light' : ''}" style="${colorVars(FAM[top.k].rep)}"></span><span class="t">${ties.map(f => FAM[f.k].th).join(' · ')}</span></div><span class="kpi-sub">${top.n} คน · ${Math.round(top.n / done * 100)}% ของผู้ตอบ${ties.length > 1 ? ' (เท่ากัน)' : ''}</span>` : '<div class="kpi-value is-text muted">—</div><span class="kpi-sub">ยังไม่มีข้อมูล</span>'}</div>
+    <div class="kpi"><span class="kpi-label">เฉดสีที่ไม่ซ้ำกัน</span><div class="kpi-value">${uniq}<small>เฉด</small></div><span class="kpi-sub">กระจายอยู่ใน ${st.famRank.length} โทนสี</span></div>
+    <div class="kpi"><span class="kpi-label">ยังไม่ได้เลือก</span><div class="kpi-value">${st.pending.length}<small>คน</small></div><span class="kpi-sub">${st.pending.length ? 'ส่งรายชื่อเตือนได้ด้านล่าง' : 'ครบทุกคนแล้ว'}</span>${st.pending.length ? '<button type="button" class="link" data-scroll="pendingCard">ดูรายชื่อ</button>' : ''}</div>`;
+
+  const ordered = state.mosaicSort === 'tone'
+    ? st.all.slice().sort((a, b) => toneKey(a.color) - toneKey(b.color) || (a.no || 0) - (b.no || 0))
+    : st.all;
+  $$('#mosaicSort button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.msort === state.mosaicSort)));
+  $('#mosaic').innerHTML = state.loaded ? ordered.map(tileHtml).join('') : '<div class="skel" style="grid-column:1/-1;height:220px"></div>';
+
+  const max = top ? top.n : 1;
+  $('#famBars').innerHTML = st.famRank.length ? st.famRank.map(f => {
+    const fam = FAM[f.k], p = Math.round(f.n / done * 100);
+    return `<button type="button" class="bar-row" data-fam="${f.k}" data-tt="โทน${fam.th} · ${f.n} คน" data-ts="${p}% ของผู้ตอบ · แตะเพื่อดูรายชื่อ" data-tc="${fam.rep}">
+      <span class="bar-label"><span class="dot xs" style="${colorVars(fam.rep)}"></span>${fam.th}</span>
+      <span class="bar-track"><span class="bar-fill" style="--w:${(f.n / max * 100).toFixed(1)}%">${f.list.map(s => `<i${isLight(s.color.hex) ? ' class="is-light"' : ''} style="--c:${s.color.hex}"></i>`).join('')}</span></span>
+      <span class="bar-val">${f.n}<small>${p}%</small></span></button>`;
+  }).join('') : '<div class="empty-state">ยังไม่มีใครเลือกสี</div>';
+
+  const spec = st.answered.slice().sort((a, b) => toneKey(a.color) - toneKey(b.color));
+  const spEl = $('#spectrum');
+  spEl.classList.toggle('is-empty', !spec.length);
+  spEl.innerHTML = spec.length ? spec.map(s => `<button type="button" style="--c:${s.color.hex}" data-person="${esc(s.id)}" data-tt="${esc(s.nickname)} · ${esc(s.color.name)}" data-ts="${s.color.hex}" data-tc="${s.color.hex}" aria-label="${esc(s.nickname)} ${esc(s.color.name)}"></button>`).join('') : 'รอสีแรกของรุ่น…';
+  $('#topShades').innerHTML = st.shades.length ? st.shades.slice(0, 9).map(sh => `<div class="shade"><span class="shade-sw" style="--c:${sh.hex}"></span><span class="shade-name">${esc(sh.name)}<small>${sh.hex}</small></span><span class="shade-n">${sh.n}<small>คน</small></span></div>`).join('') : '<p class="note">ยังไม่มีข้อมูล</p>';
+
+  const recent = st.answered.filter(s => s.updatedAt).sort((a, b) => b.updatedAt - a.updatedAt).slice(0, 8);
+  $('#feed').innerHTML = recent.length ? recent.map(s => `<li><span class="dot sm${isLight(s.color.hex) ? ' is-light' : ''}" style="${colorVars(s.color.hex)}"></span><span class="feed-text"><b>${esc(s.nickname)}</b> เลือก ${esc(s.color.name)}</span><time datetime="${s.updatedAt.toISOString()}">${ago(s.updatedAt)}</time></li>`).join('') : '<li class="muted">ยังไม่มีความเคลื่อนไหว</li>';
+  $('#feedSub').textContent = state.opts.auto ? 'อัปเดตอัตโนมัติทุก 30 วินาที' : 'กดรีเฟรชเพื่อดูข้อมูลล่าสุด';
+
+  $('#pendingCount').textContent = st.pending.length;
+  $('#btnCopyPending').hidden = !st.pending.length;
+  $('#pendingChips').innerHTML = st.pending.length ? st.pending.map(s => `<button type="button" class="chip" data-pick-person="${esc(s.id)}" title="เลือกสีให้ ${esc(s.nickname)}"><span class="dot xs empty"></span>${esc(s.nickname)}<small>${pad(s.no)}</small></button>`).join('') : (state.loaded ? '<div class="all-done" style="flex:1">ทุกคนเลือกสีครบแล้ว 🎉</div>' : '');
+}
+
+function renderPeople() {
+  const st = computeStats(), all = st.all;
+  const filters = [['all', 'ทั้งหมด', all.length, null], ['done', 'เลือกแล้ว', st.answered.length, null], ['todo', 'ยังไม่เลือก', st.pending.length, null],
+    ...st.famRank.map(f => [f.k, FAM[f.k].th, f.n, FAM[f.k].rep])];
+  if (!filters.some(f => f[0] === state.peopleF)) state.peopleF = 'all';
+  $('#peopleFilter').innerHTML = filters.map(([k, l, n, rep]) => `<button type="button" class="chip" data-pf="${k}" aria-pressed="${state.peopleF === k}">${rep ? `<span class="dot xs" style="${colorVars(rep)}"></span>` : ''}${l}<small>${n}</small></button>`).join('');
+  $('#peopleSort').value = state.peopleSort;
+
+  const q = normQ(state.peopleQ), f = state.peopleF;
+  let list = all.filter(s => {
+    if (f === 'done' && !s.color) return false;
+    if (f === 'todo' && s.color) return false;
+    if (FAM[f] && (!s.color || s.color.family !== f)) return false;
+    return !q || matchQ(s, q, true);
+  });
+  const sorters = {
+    no: (a, b) => (a.no || 9999) - (b.no || 9999),
+    nick: (a, b) => a.nickname.localeCompare(b.nickname, 'th'),
+    tone: (a, b) => toneKey(a.color) - toneKey(b.color) || (a.no || 0) - (b.no || 0),
+    recent: (a, b) => (b.updatedAt ? b.updatedAt.getTime() : 0) - (a.updatedAt ? a.updatedAt.getTime() : 0) || (a.no || 0) - (b.no || 0),
+  };
+  list = list.slice().sort(sorters[state.peopleSort] || sorters.no);
+
+  const head = `<div class="tr th" role="row"><span>ลำดับ</span><span>ชื่อเล่น</span><span>ชื่อ-นามสกุล</span><span>รหัสนักศึกษา</span><span>สีที่ชอบ</span><span>โทน</span><span style="text-align:right">บันทึกเมื่อ</span></div>`;
+  const rows = list.map(s => {
+    const c = s.color;
+    return `<button type="button" class="tr" data-person="${esc(s.id)}" role="row">
+      <span class="td td-no">${pad(s.no)}</span>
+      <span class="td td-nick">${esc(s.nickname)}</span>
+      <span class="td td-name">${esc(fullName(s))}</span>
+      <span class="td td-id">${esc(s.id)}</span>
+      <span class="td td-color">${c ? `<span class="dot sm${isLight(c.hex) ? ' is-light' : ''}" style="${colorVars(c.hex)}"></span><span class="cn">${esc(c.name)}</span>${c.approx ? '<span class="approx">ข้อความ</span>' : `<code>${c.hex}</code>`}` : '<span class="dot sm empty"></span><span class="muted">ยังไม่เลือก</span>'}</span>
+      <span class="td td-fam">${c ? FAM[c.family].th : '—'}</span>
+      <span class="td td-time" title="${s.updatedAt ? fmtDT.format(s.updatedAt) : ''}">${s.updatedAt ? ago(s.updatedAt) : '—'}</span></button>`;
+  }).join('');
+  $('#peopleTable').innerHTML = !state.loaded ? '<div class="skel" style="height:320px;border-radius:0;border:0"></div>'
+    : head + (rows || '<div class="empty-state">ไม่พบข้อมูลตามเงื่อนไข</div>');
+}
+
+/* person dialog */
+function openPerson(id) {
+  const s = byId(id); if (!s) return;
+  const c = s.color, el = $('#personSheet');
+  const head = c
+    ? `<div class="ph" style="${colorVars(c.hex)}">`
+    : '<div class="ph ph-empty">';
+  let body;
+  if (c) {
+    const fam = FAM[c.family], [r, g, b] = hexToRgb(c.hex), h = hslOf(c.hex);
+    body = `
+      <div class="pb-row"><div><span class="label">สีที่ชอบ</span><div class="pb-color">${esc(c.name)}</div></div>${c.approx ? '' : `<button type="button" class="copy" data-copy="${c.hex}" title="คัดลอกรหัสสี">${c.hex}${ICON.copy}</button>`}</div>
+      ${c.approx ? '<p class="note">ข้อมูลในชีตเป็นข้อความ ไม่มีรหัสสี จึงแสดงสีตัวแทนของโทนนี้แทน</p>' : ''}
+      <div class="specs">
+        <div><span>โทนสี</span><b>${fam.th}</b></div>
+        <div><span>บันทึกเมื่อ</span><b>${s.updatedAt ? fmtDT.format(s.updatedAt) : '—'}</b></div>
+        ${c.approx ? '' : `<div><span>RGB</span><b>${r}, ${g}, ${b}</b></div><div><span>HSL</span><b>${Math.round(h.h)}°, ${Math.round(h.s * 100)}%, ${Math.round(h.l * 100)}%</b></div>`}
+      </div>
+      <div class="meaning"><span class="label">ความหมายของสี (เพื่อความสนุก)</span><p>${fam.meaning}</p></div>
+      ${c.approx ? '' : `<div><span class="label">สีที่เข้ากัน · แตะเพื่อคัดลอก</span><div class="harm">${harmonies(c.hex).map(x => `<button type="button" class="harm-sw" style="${colorVars(x.hex)}" data-copy="${x.hex}"><span>${x.label}</span><code>${x.hex}</code></button>`).join('')}</div></div>`}`;
+  } else {
+    body = '<p class="note" style="font-size:.95rem">ยังไม่ได้เลือกสีที่ชอบ — กดปุ่มด้านล่างเพื่อเลือกสีให้ได้เลย</p>';
+  }
+  el.innerHTML = `${head}
+      <button type="button" class="icon-btn ph-close" data-close aria-label="ปิด">${ICON.x}</button>
+      <div class="ph-tag">NO. ${pad(s.no)} · ${esc(s.id)}</div>
+      <div class="ph-nick">${esc(s.nickname)}</div>
+      <div class="ph-name">${esc(formalName(s))}</div>
+    </div>
+    <div class="pb">${body}</div>
+    <div class="pf"><button type="button" class="btn btn-ghost btn-sm" data-close>ปิด</button><button type="button" class="btn btn-primary btn-sm" data-repick="${esc(s.id)}">${ICON.palette}${c ? 'แก้ไขสี' : 'เลือกสีให้เลย'}</button></div>`;
+  openDialog($('#dlgPerson'));
+}
+function openDialog(d) { hideTip(); if (!d.open) { if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', ''); } }
+function closeDialog(d) { if (d && d.open) { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); } }
+
+/* settings */
+function openSettings() {
+  $('#apiInput').value = API_URL;
+  $('#optMask').checked = state.opts.mask;
+  $('#optAuto').checked = state.opts.auto;
+  $('#testResult').hidden = true;
+  $('#btnDemoReset').hidden = !isDemo();
+  openDialog($('#dlgSettings'));
+}
+function validateUrl(u) {
+  if (!u) return '';
+  if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(u)) return 'URL ควรขึ้นต้นด้วย https://script.google.com/macros/s/…';
+  if (!/\/exec(\?|$)/.test(u)) return 'URL ควรลงท้ายด้วย /exec (ไม่ใช่ /dev)';
+  return '';
+}
+async function testConnection() {
+  const u = $('#apiInput').value.trim(), out = $('#testResult'), btn = $('#btnTest');
+  out.hidden = false; out.className = 'test-result';
+  if (!u) { out.textContent = 'ยังไม่ได้ใส่ URL — ระบบจะทำงานในโหมดสาธิต'; return; }
+  const warn = validateUrl(u);
+  btn.classList.add('is-loading'); out.textContent = 'กำลังทดสอบ…';
+  try {
+    const d = await api.get({ action: 'list' }, u);
+    if (!d || !d.ok) throw new Error((d && d.error) || 'API ตอบกลับไม่ถูกต้อง');
+    out.className = 'test-result ok';
+    out.innerHTML = `เชื่อมต่อสำเร็จ · ชีต <b>${esc(d.sheet)}</b> · นักศึกษา ${d.total} คน (เลือกสีแล้ว ${d.answered} คน)`;
+  } catch (e) {
+    out.className = 'test-result bad';
+    out.textContent = 'เชื่อมต่อไม่สำเร็จ: ' + (e.message || e) + (warn ? ' · ' + warn : '');
+  } finally { btn.classList.remove('is-loading'); }
+}
+function saveSettings() {
+  const u = $('#apiInput').value.trim();
+  const changed = u !== API_URL;
+  API_URL = u; store.set('pou.api', u);
+  state.opts.mask = $('#optMask').checked; store.set('pou.mask', state.opts.mask);
+  state.opts.auto = $('#optAuto').checked; store.set('pou.auto', state.opts.auto);
+  closeDialog($('#dlgSettings'));
+  if (changed) {
+    state.loaded = false; state.students = []; state.lastSync = null; state.lastError = '';
+    if (state.step !== 'who') goStep('who');
+    renderAll(); load();
+    toast(u ? 'บันทึก URL แล้ว กำลังเชื่อมต่อ…' : 'กลับสู่โหมดสาธิต');
+  } else { renderAll(); toast('บันทึกการตั้งค่าแล้ว'); }
+}
+
+/* CSV, copy */
+function exportCsv() {
+  const rows = [['ลำดับ', 'รหัสนักศึกษา', 'ชื่อ', 'นามสกุล', 'ชื่อเล่น', 'สีที่ชอบ', 'HEX', 'โทนสี', 'บันทึกเมื่อ']];
+  state.students.forEach(s => rows.push([s.no == null ? '' : s.no, s.id, s.title + s.first, s.surname, s.nickname,
+    s.color ? s.color.name : '', s.color && !s.color.approx ? s.color.hex : '', s.color ? FAM[s.color.family].th : '', s.updatedAt ? fmtDT.format(s.updatedAt) : '']));
+  const csv = '﻿' + rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+  a.download = `สีที่ชอบ_พยบ_รุ่น1_${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast('ส่งออกไฟล์ CSV แล้ว');
+}
+async function copyText(t, msg = 'คัดลอกแล้ว') {
+  try { await navigator.clipboard.writeText(t); toast(msg); }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast(msg); } catch (_) { toast('คัดลอกไม่สำเร็จ', 'error'); }
+    ta.remove();
+  }
+}
+function copyPending() {
+  const p = state.students.filter(s => !s.color);
+  if (!p.length) return;
+  let t = `🎨 ยังไม่ได้เลือกสีที่ชอบ (${p.length} คน)\n` + p.map(s => `${pad(s.no)}. ${s.nickname} — ${fullName(s)}`).join('\n');
+  if (/^https?:/.test(location.protocol)) t += `\n\nเลือกสีได้ที่ 👉 ${location.origin}${location.pathname}#survey`;
+  copyText(t, `คัดลอกรายชื่อ ${p.length} คนแล้ว`);
+}
+
+/* ─────────────────────────── Effects ─────────────────────────── */
+function setGlow(a, b, c) {
+  const r = document.documentElement.style;
+  r.setProperty('--glow-a', a); r.setProperty('--glow-b', b); r.setProperty('--glow-c', c);
+}
+function updateAmbient() {
+  const r = document.documentElement.style;
+  if (state.view === 'survey' && state.step !== 'who' && (state.pick || (current() && current().color))) {
+    const hex = state.pick ? state.pick.hex : current().color.hex;
+    const { h, s, l } = hslOf(hex);
+    setGlow(hex, hslToHex((h + 40) % 360, s, clamp(l, .35, .7)), hslToHex((h + 320) % 360, s, clamp(l, .35, .7)));
+    r.setProperty('--pick', hex); r.setProperty('--pick-ink', inkFor(hex));
+    return;
+  }
+  r.setProperty('--pick', '#A78BFA'); r.setProperty('--pick-ink', '#0B0B10');
+  if (state.view !== 'survey' && state.loaded) {
+    const top = computeStats().famRank.slice(0, 3).map(f => FAM[f.k].rep);
+    while (top.length < 3) top.push(DEFAULT_GLOW[top.length]);
+    setGlow(top[0], top[1], top[2]);
+  } else setGlow(...DEFAULT_GLOW);
+}
+
+let confettiRAF = 0;
+function confetti(hex) {
+  if (reduceMotion()) return;
+  const cv = $('#confetti'), ctx = cv.getContext('2d');
+  const W = innerWidth, H = innerHeight, dpr = Math.min(2, devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  cv.hidden = false;
+  const colors = [hex, hex, ...harmonies(hex).map(x => x.hex), mix(hex, '#FFFFFF', .5), '#FFFFFF'];
+  const parts = Array.from({ length: 170 }, (_, i) => {
+    const fromLeft = i % 2 === 0;
+    return {
+      x: fromLeft ? -10 : W + 10, y: H * (0.55 + Math.random() * 0.3),
+      vx: (fromLeft ? 1 : -1) * (6 + Math.random() * 10), vy: -(10 + Math.random() * 12),
+      w: 6 + Math.random() * 8, h: 4 + Math.random() * 6, rot: Math.random() * 6.28, vr: (Math.random() - .5) * .35,
+      c: colors[Math.floor(Math.random() * colors.length)], round: Math.random() < .35,
+    };
+  });
+  const start = performance.now(), D = 2800;
+  cancelAnimationFrame(confettiRAF);
+  const frame = t => {
+    const el = t - start;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = clamp(1 - (el - D * 0.6) / (D * 0.4), 0, 1);
+    for (const p of parts) {
+      p.vy += 0.38; p.vx *= 0.985; p.vy *= 0.995; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c;
+      if (p.round) { ctx.beginPath(); ctx.arc(0, 0, p.w / 2.4, 0, 6.283); ctx.fill(); }
+      else ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.rot * 2)) + 1);
+      ctx.restore();
+    }
+    if (el < D) confettiRAF = requestAnimationFrame(frame); else { ctx.clearRect(0, 0, W, H); cv.hidden = true; }
+  };
+  confettiRAF = requestAnimationFrame(frame);
+}
+
+const tip = $('#tip'); let tipEl = null;
+function hideTip() { tip.hidden = true; tipEl = null; }
+function positionTip(e) {
+  const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = e.clientX + pad, y = e.clientY + pad;
+  if (x + w > innerWidth - 8) x = e.clientX - w - pad;
+  if (y + h > innerHeight - 8) y = e.clientY - h - pad;
+  tip.style.transform = `translate(${Math.max(8, x)}px, ${Math.max(8, y)}px)`;
+}
+document.addEventListener('pointerover', e => {
+  if (e.pointerType === 'touch') return;
+  const t = e.target.closest('[data-tt]');
+  if (t === tipEl) return;
+  tipEl = t;
+  if (!t) { tip.hidden = true; return; }
+  const c = isHex(t.dataset.tc) ? `<i style="background:${t.dataset.tc}"></i>` : '';
+  tip.innerHTML = `${c}<span><b>${esc(t.dataset.tt)}</b>${t.dataset.ts ? `<small>${esc(t.dataset.ts)}</small>` : ''}</span>`;
+  tip.hidden = false; positionTip(e);
+});
+document.addEventListener('pointermove', e => { if (!tip.hidden) positionTip(e); }, { passive: true });
+document.addEventListener('pointerout', e => { if (!e.relatedTarget) hideTip(); });
+window.addEventListener('scroll', hideTip, { passive: true });
+
+function toast(msg, type = 'ok') {
+  const el = document.createElement('div');
+  el.className = 'toast' + (type === 'error' ? ' error' : '');
+  el.innerHTML = `<span class="toast-dot"></span><span>${esc(msg)}</span>`;
+  $('#toasts').appendChild(el);
+  setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 320); }, type === 'error' ? 5200 : 2800);
+}
+
+function renderTheme() {
+  const t = document.documentElement.getAttribute('data-theme') || 'dark';
+  $('#btnTheme').innerHTML = t === 'dark' ? ICON.sun : ICON.moon;
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'dark' ? '#07070B' : '#F3F2EE';
+}
+
+/* ─────────────────────────── Events ─────────────────────────── */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, a, [data-close]');
+  if (!t) return;
+  const d = t.dataset;
+  if (d.nav) { e.preventDefault(); closeDialog($('#dlgPerson')); setView(d.nav); if (d.nav === 'survey' && state.step === 'done') goStep('who'); return; }
+  if (d.step) { goStep(d.step); return; }
+  if (d.pickPerson) { closeDialog($('#dlgPerson')); openPick(d.pickPerson); return; }
+  if (d.repick) { closeDialog($('#dlgPerson')); openPick(d.repick); return; }
+  if (d.person) { openPerson(d.person); return; }
+  if ('close' in d) { closeDialog(t.closest('dialog')); return; }
+  if (d.copy) { copyText(d.copy, 'คัดลอก ' + d.copy + ' แล้ว'); return; }
+  if (d.hex && t.classList.contains('sw')) { const p = PALETTE_BY_HEX.get(d.hex); setPick(d.hex, p ? p.name : autoName(d.hex), false); return; }
+  if (d.whof) { state.whoF = d.whof; renderWho(); return; }
+  if (d.msort) { state.mosaicSort = d.msort; renderDash(); return; }
+  if (d.pf) { state.peopleF = d.pf; renderPeople(); return; }
+  if (d.fam) { state.peopleF = d.fam; state.peopleQ = ''; $('#peopleSearch').value = ''; setView('people'); return; }
+  if (d.open === 'settings') { openSettings(); return; }
+  if (d.scroll) { const el = document.getElementById(d.scroll); if (el) el.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); return; }
+});
+['dlgPerson', 'dlgSettings'].forEach(id => {
+  const dlg = $('#' + id);
+  dlg.addEventListener('click', e => { if (e.target === dlg) closeDialog(dlg); });
+});
+$('#btnRefresh').addEventListener('click', () => load());
+$('#btnTheme').addEventListener('click', () => {
+  const next = (document.documentElement.getAttribute('data-theme') || 'dark') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next); store.set('pou.theme', next); renderTheme();
+});
+$('#btnSave').addEventListener('click', saveColor);
+$('#btnTest').addEventListener('click', testConnection);
+$('#btnSaveSettings').addEventListener('click', saveSettings);
+$('#btnDemoReset').addEventListener('click', () => { demo.reset(); closeDialog($('#dlgSettings')); goStep('who'); load(); toast('รีเซ็ตข้อมูลสาธิตแล้ว'); });
+$('#btnCsv').addEventListener('click', exportCsv);
+$('#btnCopyPending').addEventListener('click', copyPending);
+
+$('#whoSearch').addEventListener('input', e => { state.whoQ = e.target.value; renderWho(); });
+$('#whoSearch').addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const first = $('#whoGrid [data-pick-person]');
+  if (first && $$('#whoGrid [data-pick-person]').length === 1) openPick(first.dataset.pickPerson);
+});
+$('#peopleSearch').addEventListener('input', e => { state.peopleQ = e.target.value; renderPeople(); });
+$('#peopleSort').addEventListener('change', e => { state.peopleSort = e.target.value; renderPeople(); });
+$('#customColor').addEventListener('input', e => {
+  const hex = e.target.value.toUpperCase();
+  $('#hexInput').value = hex; $('#hexInput').classList.remove('is-invalid');
+  setCustom(hex);
+});
+$('#hexInput').addEventListener('input', e => {
+  let v = e.target.value.trim().toUpperCase();
+  if (v && v[0] !== '#') v = '#' + v;
+  const ok = isHex(v);
+  e.target.classList.toggle('is-invalid', !!v && v.length >= 7 && !ok);
+  if (ok) setCustom(v);
+});
+$('#customName').addEventListener('input', e => {
+  if (state.pick && state.pick.custom) { state.pick.name = e.target.value.trim() || autoName(state.pick.hex); updatePick(); }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && state.view === 'survey' && state.step === 'who' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); $('#whoSearch').focus(); }
+});
+window.addEventListener('hashchange', () => setView(viewFromHash(), false));
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.opts.auto && state.lastSync && Date.now() - state.lastSync > REFRESH_MS) load({ silent: true }); });
+setInterval(() => {
+  if (document.visibilityState !== 'visible' || !state.opts.auto || state.saving) return;
+  if ($('#dlgSettings').open) return;
+  if (state.view === 'survey' && state.step === 'pick') return; // อย่ารบกวนระหว่างเลือกสี
+  load({ silent: true });
+}, REFRESH_MS);
+
+/* ─────────────────────────── Init ─────────────────────────── */
+if (SURVEY_ONLY) document.body.classList.add('survey-only');
+if (params.get('api')) { params.delete('api'); const qs = params.toString(); history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash); }
+const cache = store.get('pou.cache');
+if (!isDemo() && cache && cache.url === API_URL && cache.data && Array.isArray(cache.data.students)) { applyData(cache.data); state.lastSync = new Date(cache.at); }
+setView(viewFromHash(), false);
+goStep('who');
+load();
+})();
+</script>
+</body>
+</html>
